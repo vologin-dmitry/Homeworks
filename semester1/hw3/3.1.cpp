@@ -25,10 +25,10 @@ int main()
 	printf("Please enter array size: ");
 	scanf("%i", &size);
 	int *data = new int[size] {};
-	printf("Please fill the array: ");
 	fillArray(data, size);
 	(size >= 10) ? qSort(data, 0, size - 1) : insSort(data, size);
 	printArray(data, size);
+	delete []data;
 }
 
 
@@ -105,7 +105,7 @@ int maxOf(int data1, int data2, int data3)
 	{
 		return data2;
 	}
-	if (data3 >= data2 && data1 >= data1)
+	if (data3 >= data2 && data3 >= data1)
 	{
 		return data3;
 	}
