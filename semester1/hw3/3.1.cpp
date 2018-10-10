@@ -29,6 +29,7 @@ int main()
 	fillArray(data, size);
 	(size >= 10) ? qSort(data, 0, size - 1) : insSort(data, size);
 	printArray(data, size);
+	delete[] data;
 }
 
 
@@ -52,7 +53,7 @@ void qSort(int data[], int leftWall, int rightWall)
 {
 	int ptrLeft = leftWall;
 	int ptrRight = rightWall;
-	int number = maxOf(data[ptrLeft],data[ptrRight],data[(ptrRight + ptrLeft)/2]);
+	int number = maxOf(data[ptrLeft], data[ptrRight], data[(ptrRight + ptrLeft) / 2]);
 	while (ptrRight > ptrLeft)
 	{
 		while (data[ptrLeft] < number)
@@ -68,7 +69,7 @@ void qSort(int data[], int leftWall, int rightWall)
 			swap(data[ptrLeft], data[ptrRight]);
 		}
 	}
-	if (ptrRight > leftWall) 
+	if (ptrRight > leftWall)
 	{
 		qSort(data, leftWall, ptrRight);
 	}
