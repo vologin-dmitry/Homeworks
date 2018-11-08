@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
-//#include "pch.h"
+#include "pch.h"
 #include <stdio.h>
 
 void bubbleSort(int data[], const int size);
