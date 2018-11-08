@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
+
 #include <iostream>
 #include <locale.h>
 
@@ -7,56 +8,54 @@ using namespace std;
 struct Element
 {
     int value = -1;
-    Element* next = nullptr;
+    Element *next = nullptr;
 };
 
-void delNumb(Element **head,int toDel);
-void push(Element **head,int data);
+void deleteNumber(Element **head, int toDelete);
+void push(Element **head, int data);
 void print(Element *head);
 void clear(Element **head);
 bool test();
 
 int main()
 {
-    setlocale(LC_ALL,"russian");
-    cout << "Введите 1, чтобы выполнить программу\nВведите 2, чтобы выполнить тесты\n";
-    char choose = ' ';
-    cin >> choose;
-    if (choose == '2')
+    setlocale(LC_ALL, "russian");
+    cout << "Подождите, проходят тесты\n";
+    if (test())
     {
-        if (test())
-        {
-            cout << "Тесты прошли неправильно !!";
-            return 1;
-        }
-        else
-        {
-            cout << "Тесты прошли успешно";
-        }
+        cout << "Тесты прошли неправильно !!";
+        return 1;
     }
+    else
+    {
+        cout << "Тесты прошли успешно";
+    }
+    char choose = ' ';
     Element *head = nullptr;
     while (choose != '0')
     {
-        printf("\nВведите 0, чтобы выйти\nВведите 1, чтобы добавить значение\n"
-               "Введите 2, чтобы удалить значение\nВведите 3, чтобы распечатать список\n");
+        cout << "\nВведите 0, чтобы выйти";
+        cout << "\nВведите 1, чтобы добавить значение";
+        cout << "\nВведите 2, чтобы удалить значение";
+        cout << "\nВведите 3, чтобы распечатать список\n";
         cin >> choose;
         switch (choose)
         {
             case '0':
             {
-                if (head == nullptr) {cout << "Введите 1, чтобы выполнить программу\nВведите 2, чтобы выполнить тесты\n";
-                    cout << "Значений нет";
+                if (head == nullptr)
+                {
                     return 0;
                 }
                 clear(&head);
-                break;
+                return 0;
             }
             case '1':
             {
                 cout << "Введите число\n";
-                int numb;
-                cin >> numb;
-                push(&head, numb);
+                int number = 0;
+                cin >> number;
+                push(&head, number);
                 break;
             }
             case '2':
@@ -64,54 +63,56 @@ int main()
                 cout << "Какую цифру удалить ?\n";
                 int toDel = 0;
                 cin >> toDel;
-                delNumb(&head, toDel);
+                deleteNumber(&head, toDel);
                 break;
             }
             case '3':
             {
-                if (head == nullptr) {
-                    cout << "ERROR";
+                if (head == nullptr)
+                {
+                    cout << "\nСписок пуст";
                     return 1;
                 }
                 print(head);
                 break;
             }
-            default: break;
+            default:
+                break;
         }
     }
     return 0;
 }
 
-void push(Element **head,const int data)
+void push(Element **head, const int data)
 {
-    auto *knot = new Element;
-    knot->value = data;
+    auto *node = new Element;
+    node->value = data;
 
     if (*head == nullptr)
     {
-        *head = knot;
+        *head = node;
         return;
     }
-    if (knot->value < (*head)->value)
+    if (node->value < (*head)->value)
     {
-        knot->next = *head;
-        *head = knot;
+        node->next = *head;
+        *head = node;
         return;
     }
     Element *pointer = *head;
-    while (pointer->next != nullptr && (pointer->next)->value < knot->value)
+    while (pointer->next != nullptr && (pointer->next)->value < node->value)
     {
         pointer = pointer->next;
     }
     if (pointer->next == nullptr)
     {
-        pointer->next = knot;
+        pointer->next = node;
         return;
     }
-    if ((pointer->next)->value >= knot->value)
+    if ((pointer->next)->value >= node->value)
     {
-        knot->next = pointer->next;
-        pointer->next = knot;
+        node->next = pointer->next;
+        pointer->next = node;
         return;
     }
 }
@@ -126,16 +127,16 @@ void print(Element *head)
     }
 }
 
-void delNumb(Element **head,const int toDel)
+void deleteNumber(Element **head, const int toDelete)
 {
     Element *pointer = *head;
-    if ((*head)->value == toDel)
+    if ((*head)->value == toDelete)
     {
         *head = (*head)->next;
         delete pointer;
         return;
     }
-    while(pointer->next != nullptr && (pointer->next)->value != toDel)
+    while (pointer->next != nullptr && (pointer->next)->value != toDelete)
     {
         pointer = pointer->next;
     }
@@ -144,9 +145,9 @@ void delNumb(Element **head,const int toDel)
         cout << "Нет такого номера !\n";
         return;
     }
-    if ((pointer->next)->value == toDel)
+    if ((pointer->next)->value == toDelete)
     {
-        Element *delPtr= pointer->next;
+        Element *delPtr = pointer->next;
         pointer->next = (pointer->next)->next;
         delete delPtr;
     }
@@ -164,16 +165,17 @@ void clear(Element **head)
     }
     delete pointer;
 }
+
 bool test()
 {
-    int add[10]{5,-6,0,53,125,-643,1234,6,2,0};
-    int minus[10]{6,2,0,42141,-1,-32,-9,-65,1234,2};
-    int firstAns[10]{-643,-6,0,0,2,5,6,53,125,1234};
-    int secondAns[6]{-643,-6,0,5,53,125};
+    int add[10]{ 5, -6, 0, 53, 125, -643, 1234, 6, 2, 0 };
+    int minus[10]{ 6, 2, 0, 42141, -1, -32, -9, -65, 1234, 2 };
+    int firstAns[10]{ -643, -6, 0, 0, 2, 5, 6, 53, 125, 1234 };
+    int secondAns[6]{ -643, -6, 0, 5, 53, 125 };
     Element *head = nullptr;
     for (int i = 0; i < 10; ++i)
     {
-        push(&head,add[i]);
+        push(&head, add[i]);
     }
     Element *pointer = head;
     for (int i = 0; i < 10; i++)
@@ -186,7 +188,7 @@ bool test()
     }
     for (int i = 0; i < 10; ++i)
     {
-        delNumb(&head,minus[i]);
+        deleteNumber(&head, minus[i]);
     }
     pointer = head;
     for (int i = 0; i < 6; i++)
