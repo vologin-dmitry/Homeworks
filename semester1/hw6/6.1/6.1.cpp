@@ -27,6 +27,7 @@ int main()
 	getline(cin,data);
 	data[strlen(&data[0])] = '\n';
 	cout << countThis(data, stack);
+	return 0;
 }
 
 int countThis(string data, Stack stack)
