@@ -31,14 +31,16 @@ int main()
 		file >> number;
 		addNode(list, number);
 	}
+	file.close();
 	if (check(list))
 	{
 		cout << "Симметричен";
 	}
 	else
 	{
-		cout << "Не симментричен";
+		cout << "Не симметричен";
 	}
+
 	deleteList(list);
 }
 
