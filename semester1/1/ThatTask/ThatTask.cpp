@@ -22,7 +22,7 @@ int main()
 		}
 	}
 	int size = data.size();
-	int *dataInArray = new int[size] {}; // Не забудь очистить !!!
+	int *dataInArray = new int[size] {}; 
 	for (int i = 0; i < size; i++)
 	{
 		dataInArray[i] = data.top();
