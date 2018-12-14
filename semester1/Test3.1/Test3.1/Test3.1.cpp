@@ -32,6 +32,7 @@ int main()
 	}
 	listRotate(list);
 	deleteList(list);
+	file.close();
 	delete list;
 	return 0;
 }
