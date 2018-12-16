@@ -11,14 +11,14 @@ struct Stack
 	StackElement *head = nullptr;
 };
 
-//Добавить элемент в стек
+//Add element to stack
 void push(Stack &stack, int data);
 
-//Вынуть элемент из стэка
+//Remove element from stack
 int pop(Stack &stack, bool &result);
 
-//Проверить является ли стек пустым
+//Check if the stack is empty
 bool isEmpty(Stack stack);
 
-//Удалить стэк
+//Delete stack
 void deleteStack(Stack &stack);
