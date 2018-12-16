@@ -1,4 +1,4 @@
-п»ї#include "pch.h"
+#include "pch.h"
 #include <string>
 #include <string.h>
 #include <iostream>
@@ -18,12 +18,12 @@ int main()
 	setlocale(LC_ALL, "russian");
 	if (tests())
 	{
-		printf("Р§С‚Рѕ С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє !");
+		printf("Что то пошло не так !");
 		return 1;
 	}
 	Stack* stack = new Stack;
 	string data = " ";
-	cout << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ" << endl;
+	cout << "Введите строку" << endl;
 	getline(cin, data);
 	data[strlen(&data[0])] = '\n';
 	cout << countThis(data, *stack);
@@ -52,7 +52,7 @@ int countThis(string data, Stack stack)
 			}
 			else
 			{
-				cout << "Р§С‚Рѕ С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє ! РџСЂРѕРІРµСЂСЊС‚Рµ РІРІРµРґРµРЅРЅС‹Р№ Р·РЅР°С‡РµРЅРёСЏ";
+				cout << "Что то пошло не так ! Проверьте введенный значения";
 				return 1;
 			}
 			i++;
@@ -66,7 +66,7 @@ int countThis(string data, Stack stack)
 			}
 			else
 			{
-				cout << "Р§С‚Рѕ С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє ! РџСЂРѕРІРµСЂСЊС‚Рµ РІРІРµРґРµРЅРЅС‹Р№ Р·РЅР°С‡РµРЅРёСЏ";
+				cout << "Что то пошло не так ! Проверьте введенный значения";
 				return 1;
 			}
 			i++;
@@ -80,7 +80,7 @@ int countThis(string data, Stack stack)
 			}
 			else
 			{
-				cout << "Р§С‚Рѕ С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє ! РџСЂРѕРІРµСЂСЊС‚Рµ РІРІРµРґРµРЅРЅС‹Р№ Р·РЅР°С‡РµРЅРёСЏ";
+				cout << "Что то пошло не так ! Проверьте введенный значения";
 				return 1;
 			}
 			i++;
@@ -94,7 +94,7 @@ int countThis(string data, Stack stack)
 			}
 			else
 			{
-				cout << "Р§С‚Рѕ С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє ! РџСЂРѕРІРµСЂСЊС‚Рµ РІРІРµРґРµРЅРЅС‹Р№ Р·РЅР°С‡РµРЅРёСЏ";
+				cout << "Что то пошло не так ! Проверьте введенный значения";
 				return 1;
 			}
 			i++;
