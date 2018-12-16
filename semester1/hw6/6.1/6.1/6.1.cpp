@@ -21,12 +21,14 @@ int main()
 		printf("Что то пошло не так !");
 		return 1;
 	}
-	Stack stack;
+	Stack* stack = new Stack;
 	string data = " ";
 	cout << "Введите строку" << endl;
-	getline(cin,data);
+	getline(cin, data);
 	data[strlen(&data[0])] = '\n';
-	cout << countThis(data, stack);
+	cout << countThis(data, *stack);
+	deleteStack(*stack);
+	delete stack;
 	return 0;
 }
 
@@ -129,15 +131,19 @@ bool popAndCheck(Stack &stack, int &firstNumber, int &secondNumber)
 bool tests()
 {
 	const int SIZE = 5;
-	Stack stack;
+	Stack *stack = new Stack;
 	string data[5]{ { "0 0 +\n" }, { "5 5 6 + *\n" }, { "5 4 * 4 5 - /\n" }, { "51 3 -\n" }, { "9 6 - 1 2 + * \n" } };
 	int answers[5]{ 0, 55, -20, 48, 9 };
 	for (int i = 0; i < SIZE; i++)
 	{
-		if (countThis(data[i], stack) != answers[i])
+		if (countThis(data[i], *stack) != answers[i])
 		{
+			deleteStack(*stack);
+			delete stack;
 			return 1;
 		}
 	}
+	deleteStack(*stack);
+	delete stack;
 	return 0;
 }
