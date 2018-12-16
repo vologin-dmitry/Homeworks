@@ -25,7 +25,7 @@ int main()
 	string data = " ";
 	cout << "¬ведите строку" << endl;
 	getline(cin, data);
-	data[strlen(&data[0])] = '\n';
+	data += '\n';
 	cout << countThis(data, *stack);
 	deleteStack(*stack);
 	delete stack;
