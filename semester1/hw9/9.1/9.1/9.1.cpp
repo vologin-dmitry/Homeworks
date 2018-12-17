@@ -23,18 +23,17 @@ int main()
 		cout << "Что то пошло не так";
 		return 1;
 	}
-	HashTable *table = new HashTable;
-	constructor(*table);
+	HashTable table;
+	constructor(table);
 	ifstream file("FileToWork.txt", ios::in);
 	if (!file.is_open())
 	{
 		cout << "Файла не существет";
 		return 1;
 	}
-	countWords(*table, file);
-	cout << hashToString(*table);
-	statistic(*table);
-	delete table;
+	countWords(table, file);
+	cout << hashToString(table);
+	statistic(table);
 	file.close();
 	return 0;
 }
@@ -115,19 +114,17 @@ void statistic(HashTable table)
 
 bool tests()
 {
-	HashTable *test = new HashTable;
+	HashTable test;
 	string answer = "нужно\t1\nтест\t3\nпроверяет\t2\nДля\t1\nзадача\t1\nнаписать\t1\nзадачи\t1\nне\t1\nзадачу\t1\n";
-	constructor(*test);
+	constructor(test);
 	ifstream file("FileToTest.txt", ios::in);
-	countWords(*test, file);
-	string maybe = hashToString(*test);
-	if (hashToString(*test) != answer || allListSizeSum(*test) != 9 || maxListSize(*test) != 2)
+	countWords(test, file);
+	string maybe = hashToString(test);
+	if (hashToString(test) != answer || allListSizeSum(test) != 9 || maxListSize(test) != 2)
 	{
-		delete test;
 		file.close();
 		return 1;
 	}
-	delete test;
 	file.close();
 	return 0;
 }
