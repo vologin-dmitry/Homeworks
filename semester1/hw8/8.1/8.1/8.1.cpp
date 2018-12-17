@@ -74,6 +74,8 @@ int main()
 		}
 		}
 	}
+	deleteTree(tree->root);
+	delete tree;
 	return 0;
 }
 
@@ -97,9 +99,11 @@ bool tests()
 		if (findStringByKey(tree,addKeys[i]) != checks[i])
 		{
 			deleteTree(tree->root);
+			delete tree;
 			return 1;
 		}
 	}
 	deleteTree(tree->root);
+	delete tree;
 	return 0;
 }
