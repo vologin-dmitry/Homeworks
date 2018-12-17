@@ -15,16 +15,16 @@ bool tests();
 int main()
 {
 	setlocale(LC_ALL, "russian");
-	Stack stack;
 	if (tests())
 	{
 		printf("Что то пошло не так !");
 		return 1;
 	}
+	Stack stack;
 	string data = " ";
 	cout << "Введите строку" << endl;
 	getline(cin, data);
-	data[strlen(&data[0])] = '\n';
+	data += '\n';
 	if (parenthesesCheck(data, stack))
 	{
 		cout << "Баланс скобок соблюден" << endl;
@@ -71,8 +71,8 @@ bool parenthesesCheck(string data, Stack &stack)
 bool tests()
 {
 	const int SIZE = 5;
-	string datas[SIZE]{ "{не}[л(пис[тесты]ать)юблю](вот)\n","{(Не){знаю что (написать)]\n","{{]}\n","{[]}\n","(Вау) {Да [она] видимо} [работает]\n" };
-	bool answers[SIZE]{ true,false,false,true,true };
+	string datas[SIZE]{ "{не}[л(пис[тесты]ать)юблю](вот)\n", "{(Не){знаю что (написать)]\n", "{{]}\n", "{[]}\n", "(Вау) {Да [она] видимо} [работает]\n" };
+	bool answers[SIZE]{ true, false, false, true, true };
 	for (int i = 0; i < SIZE; i++)
 	{
 		Stack stack;
