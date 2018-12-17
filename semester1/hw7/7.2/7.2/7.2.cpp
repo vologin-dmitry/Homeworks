@@ -27,11 +27,12 @@ int main()
 	}
 	string line = "";
 	getline(fileToWork, line);
-	line[line.length()] = '\n';
+	line += '\n';
 	buildTree(line, tree);
 	cout << countTree(tree->root) << endl;
 	printTree(tree->root);
 	deleteTree(tree->root);
+	delete tree;
  }
 
 bool tests()
@@ -49,14 +50,16 @@ bool tests()
 		Tree *testTree = new Tree{ new Node };
 		string line = "";
 		getline(TestFile, line);
-		line[line.length()] = '\n';
+		line += '\n';
 		buildTree(line, testTree);
 		if (countTree(testTree->root) != answers[i])
 		{
 			deleteTree(testTree->root);
+			delete testTree;
 			return 1;
 		}
 		deleteTree(testTree->root);
+		delete testTree;
 	}
 	return 0;
 }
