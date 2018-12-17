@@ -76,6 +76,7 @@ int main()
 		}
 	}
 	deleteTree(tree->root);
+	delete tree;
 	return 0;
 }
 
@@ -98,9 +99,11 @@ bool tests()
 		if (exists(tree, adds[i]) != checks[i])
 		{
 			deleteTree(tree->root);
+			delete tree;
 			return 1;
 		}
 	}
 	deleteTree(tree->root);
+	delete tree;
 	return 0;
 }
