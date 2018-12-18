@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Sort.h"
 
+void swap(int &first, int &second);
+int maxOf(int data1, int data2, int data3);
 
 void qSort(int data[], int leftWall, int rightWall)
 {

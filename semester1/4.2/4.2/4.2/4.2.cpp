@@ -29,6 +29,7 @@ int main()
 	fillArray(data, size, file);
 	printf("%i", mostOften(data, size));
 	delete[] data;
+	fclose(file);
 	return 0;
 }
 
