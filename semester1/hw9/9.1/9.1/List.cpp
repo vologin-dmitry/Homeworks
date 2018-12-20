@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "List.h"
 #include <iostream>
-#include "List.h"
 
 void addNode(List *list, std::string value)
 {
@@ -29,7 +28,7 @@ void printList(List list)
 	}
 }
 
-int getLength(Node current)
+int getLength(Node *current)
 {
 	int count = 0;
 	while (current != nullptr)
