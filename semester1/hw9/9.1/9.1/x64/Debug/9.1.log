@@ -1,0 +1,48 @@
+﻿  pch.cpp
+  9.1.cpp
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\hashtable.h(7): error C2011: Node: переопределение типа "struct"
+  c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\list.h(5): note:  см. объявление "Node"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(55): error C2678: бинарный "<": не найден оператор, принимающий левый операнд типа "int" (или приемлемое преобразование отсутствует)
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\system_error(319): note: может быть "bool std::operator <(const std::error_condition &,const std::error_condition &) noexcept"
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\system_error(312): note: или       "bool std::operator <(const std::error_code &,const std::error_code &) noexcept"
+  c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(55): note: при попытке сопоставить список аргументов "(int, _Ty)"
+          with
+          [
+              _Ty=List
+          ]
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(66): error C2059: синтаксическая ошибка: }
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(57): error C3861: isEmpty: идентификатор не найден
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(59): error C2065: list: необъявленный идентификатор
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(59): error C2275: Node: недопустимое использование этого типа в качестве выражения
+  c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\list.h(5): note:  см. объявление "Node"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(59): error C2955: "std::iterator": для использования класс шаблон требуется список аргументов шаблон
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.16.27023\include\xutility(4293): note:  см. объявление "std::iterator"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(59): error C2146: синтаксическая ошибка: отсутствие ")" перед идентификатором "current"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(60): error C2065: current: необъявленный идентификатор
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(60): error C2039: end: не является членом "List"
+  c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\list.h(12): note:  см. объявление "List"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(62): error C2065: current: необъявленный идентификатор
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(63): error C2065: current: необъявленный идентификатор
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(67): error C2059: синтаксическая ошибка: return
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(68): error C2059: синтаксическая ошибка: }
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(68): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(71): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(71): error C2447: {: отсутствует заголовок функции (возможно, используется формальный список старого типа)
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(88): error C2039: size: не является членом "List"
+  c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\list.h(12): note:  см. объявление "List"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(90): error C2039: size: не является членом "List"
+  c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\list.h(12): note:  см. объявление "List"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\9.1.cpp(101): error C2039: size: не является членом "List"
+  c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\list.h(12): note:  см. объявление "List"
+  HashTable.cpp
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\hashtable.h(7): error C2011: Node: переопределение типа "struct"
+  c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\list.h(5): note:  см. объявление "Node"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\hashtable.cpp(29): error C2027: использование неопределенного типа "Node"
+  c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\list.h(5): note:  см. объявление "Node"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\hashtable.cpp(35): error C2027: использование неопределенного типа "Node"
+  c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\list.h(5): note:  см. объявление "Node"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\hashtable.cpp(47): error C2039: push_back: не является членом "List"
+  c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\list.h(12): note:  см. объявление "List"
+c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\hashtable.cpp(51): error C2027: использование неопределенного типа "Node"
+  c:\users\lenovo\desktop\homeworks\semester1\hw9\9.1\9.1\list.h(5): note:  см. объявление "Node"
+  Создание кода...

@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include "List.h"
 
 struct Node
 {
@@ -10,7 +11,7 @@ struct Node
 
 struct HashTable
 {
-	std::vector<std::list<Node>> buckets;
+	std::vector<List> buckets;
 };
 
 void constructor(HashTable &table);

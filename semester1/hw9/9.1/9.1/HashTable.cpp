@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "HashTable.h"
 #include <algorithm>
+#include "List.h"
 #include <string>
 
 int hashFunction(std::string const & str)
@@ -22,16 +23,16 @@ void constructor(HashTable &table)
 Node* findNode(HashTable &table, std::string const &str)
 {
 	int hash = abs((int)(hashFunction(str) % table.buckets.size()));
-	std::list<Node>::iterator iter = table.buckets[hash].begin();
-	while (iter != table.buckets[hash].end())
+	Node *current = table.buckets[hash].head;
+	for (int i = 0; i < getLength(table.buckets[hash].head); ++i)
 	{
-		if (iter->value == str)
+		if (current->value == str)
 		{
-			return &(*iter);
+			return current;
 		}
 		else
 		{
-			++iter;
+			current = current->next;
 		}
 	}
 	return nullptr;

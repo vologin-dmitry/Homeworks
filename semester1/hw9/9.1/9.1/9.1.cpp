@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include <iostream>
 #include "HashTable.h"
+#include "List.h"
 #include <fstream>
 #include <string>
 #include <locale.h>
@@ -51,9 +52,9 @@ void countWords(HashTable &table, ifstream &file)
 string hashToString(HashTable table)
 {
 	string answer = "";
-	for (int i = 0; i < table.buckets.size(); i++)
+	for (int i = 0; i < table.buckets[i]; i++)
 	{
-		if (!table.buckets[i].empty())
+		if (!(isEmpty(table.buckets[i]))
 		{
 			list<Node>::iterator current = table.buckets[i].begin();
 			while (current != table.buckets[i].end())
