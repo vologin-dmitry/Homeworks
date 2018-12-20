@@ -21,7 +21,7 @@ void constructor(HashTable &table)
 
 Node* findNode(HashTable &table, std::string const &str)
 {
-	int hash = hashFunction(str) % table.buckets.size();
+	int hash = abs((int)(hashFunction(str) % table.buckets.size()));
 	std::list<Node>::iterator iter = table.buckets[hash].begin();
 	while (iter != table.buckets[hash].end())
 	{
@@ -42,8 +42,8 @@ void add(HashTable &table, std::string const & toAdd)
 	Node *temp = findNode(table, toAdd);
 	if (temp == nullptr)
 	{
-		int hash = hashFunction(toAdd) % table.buckets.size();
-		table.buckets[hash].push_back({ 1,toAdd });
+		int hash = abs((int)(hashFunction(toAdd) % table.buckets.size()));
+		table.buckets[hash].push_back({ 1, toAdd });
 	}
 	else
 	{
