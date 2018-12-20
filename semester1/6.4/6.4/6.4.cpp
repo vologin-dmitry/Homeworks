@@ -32,7 +32,7 @@ int main()
 	cin >> choose;
 	fillList(&list, file);
 	file.close();
-	list.head = sort(list.head, choose);
+	sort(&list, choose);
 	printList(list);
 	clear(list.head);
 }
@@ -49,7 +49,7 @@ bool tests()
 	string answers[2][SIZE]{ { "Bill", "Gherohn", "Joe", "Newbie" , "Thom" }, { "Gherohn", "Thom", "Bill", "Newbie", "Joe" } };
 	List list;
 	fillList(&list, file);
-	list.head = sort(list.head, '1');
+	sort(&list, '1');
 	for (int j = 0; j < 2; ++j)
 	{
 		Node *current = list.head;
@@ -63,7 +63,7 @@ bool tests()
 			}
 			current = current->next;
 		}
-		list.head = sort(list.head, '2');
+		sort(&list, '2');
 	}
 	clear(list.head);
 	file.close();

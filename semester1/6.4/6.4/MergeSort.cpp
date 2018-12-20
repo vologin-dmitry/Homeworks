@@ -3,7 +3,7 @@
 
 Node *merge(Node *&first, Node *&second, char choose);
 
-Node *sort(Node *&list, char choose)
+Node *mergeSort(Node *&list, char choose)
 {
 	Node *firstListHead = list;
 	Node *secondListHead = list;
@@ -16,11 +16,11 @@ Node *sort(Node *&list, char choose)
 	temp->next = nullptr;
 	if (firstListHead->next != nullptr)
 	{
-		firstListHead = sort(firstListHead, choose);
+		firstListHead = mergeSort(firstListHead, choose);
 	}
 	if (secondListHead->next != nullptr)
 	{
-		secondListHead = sort(secondListHead, choose);
+		secondListHead = mergeSort(secondListHead, choose);
 	}
 	return merge(firstListHead, secondListHead, choose);
 }
@@ -63,3 +63,10 @@ Node *merge(Node *&first, Node *&second, char choose)
 	}
 }
 
+void sort(List *list, char choose)
+{
+	if (list->head != nullptr)
+	{
+		list->head = mergeSort(list->head, choose);
+	}
+}
