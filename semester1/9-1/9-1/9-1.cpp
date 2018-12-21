@@ -35,6 +35,7 @@ int main()
 	cout << hashToString(table);
 	statistic(table);
 	file.close();
+	clearTable(table);
 	return 0;
 }
 
@@ -123,9 +124,11 @@ bool tests()
 	countWords(test, file);
 	if (hashToString(test) != answer || allListSizeSum(test) != 9 || maxListSize(test) != 2)
 	{
+		clearTable(test);
 		file.close();
 		return 1;
 	}
 	file.close();
+	clearTable(test);
 	return 0;
 }

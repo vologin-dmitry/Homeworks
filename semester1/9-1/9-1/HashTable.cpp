@@ -51,3 +51,15 @@ void add(HashTable &table, std::string const & toAdd)
 		++(temp->count);
 	}
 }
+
+void clearTable(HashTable &table)
+{
+	int size = table.buckets.size();
+	for (int i = 0; i < size; ++i)
+	{
+		if (!isEmpty(table.buckets[i]))
+		{
+			clear(table.buckets[i].head);
+		}
+	}
+}
