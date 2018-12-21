@@ -30,7 +30,7 @@ void clear(PriorityQueue *&queue)
 }
 
 
-void enqueue(PriorityQueue *&queue, const int priority, const std::string data)
+void enqueue(PriorityQueue *&queue, const int priority, const std::string  &data)
 {
 	Element *&head = queue->head;
 	auto *node = new Element{ priority, data, nullptr };
