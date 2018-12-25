@@ -17,8 +17,8 @@ struct Tree
 	Node *root = nullptr;
 };
 
-Node *smallRotateLeft(Node *first);
-Node *smallRotateRight(Node *first);
+Node *smallRotateLeft(Node *&first);
+Node *smallRotateRight(Node *&first);
 int getHeight(Node *node);
 int difference(Node *node);
 
@@ -160,7 +160,7 @@ bool exists(Tree *tree, int key)
 	return (findNodeByKey(tree, key) != nullptr);
 }
 
-Node *smallRotateLeft(Node *first)
+Node *smallRotateLeft(Node *&first)
 {
 	Node *second = first->rightChild;
 	first->rightChild = second->leftChild;
@@ -170,7 +170,7 @@ Node *smallRotateLeft(Node *first)
 	return second;
 }
 
-Node *smallRotateRight(Node *first)
+Node *smallRotateRight(Node *&first)
 {
 	Node *second = first->leftChild;
 	first->leftChild = second->rightChild;
@@ -191,7 +191,7 @@ Node *minimum(Node* current)
 	return temp;
 }
 
-void removeRecursive(Node *node, int key)
+void removeRecursive(Node *&node, int key)
 {
 	if (node == nullptr)
 	{
@@ -210,8 +210,8 @@ void removeRecursive(Node *node, int key)
 		if (node->leftChild == nullptr && node->rightChild == nullptr)
 		{
 			auto *temp = node;
-			node = nullptr;
 			delete temp;
+			node = nullptr;
 		}
 		else if (node->leftChild != nullptr && node->rightChild == nullptr)
 		{
@@ -239,12 +239,12 @@ void removeRecursive(Node *node, int key)
 	}
 }
 
-void remove(Tree *tree, int key)
+void remove(Tree *&tree, int key)
 {
 	removeRecursive(tree->root, key);
 }
 
-void deleteTreeRecursive(Node *current)
+void deleteTreeRecursive(Node *&current)
 {
 	if (current != nullptr)
 	{
@@ -263,7 +263,7 @@ void deleteTreeRecursive(Node *current)
 	else return;
 }
 
-void deleteTree(Tree *tree)
+void deleteTree(Tree *&tree)
 {
 	deleteTreeRecursive(tree->root);
 	delete tree;

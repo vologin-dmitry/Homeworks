@@ -76,7 +76,6 @@ int main()
 		}
 		}
 	}
-	deleteTree(tree);
 	return 0;
 }
 
@@ -104,6 +103,5 @@ bool tests()
 		}
 	}
 	deleteTree(tree);
-	delete tree;
 	return 0;
 }
