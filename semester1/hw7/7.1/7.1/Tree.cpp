@@ -4,6 +4,18 @@
 
 using namespace std;
 
+struct Node
+{
+	int value = 0;
+	Node *leftChild = nullptr;
+	Node *rightChild = nullptr;
+};
+
+struct Tree
+{
+	Node *root = nullptr;
+};
+
 Node *searchValue(Tree* tree, int value)
 {
 	Node *current = tree->root;
@@ -51,36 +63,15 @@ bool isEmpty(Tree *tree)
 	}
 }
 
-bool add(Tree* tree, int const  data)
-{
-	if (isEmpty(tree))
-	{
-		tree->root = new Node{ data, nullptr, nullptr };
-	}
-	else
-	{
-		if (!exists(tree, data))
-		{
-			addNode(tree->root, data);
-		}
-		else
-		{
-			return false;
-		}
-	}
-	return true;
-}
-
-
-void addNode(Node* node, int value)
+void addNodeRecursive(Node* node, int value)
 {
 	if (node->value > value && node->leftChild != nullptr)
 	{
-		addNode(node->leftChild, value);
+		addNodeRecursive(node->leftChild, value);
 	}
 	else if (node->value < value && node->rightChild != nullptr)
 	{
-		addNode(node->rightChild, value);
+		addNodeRecursive(node->rightChild, value);
 	}
 	else
 	{
@@ -95,14 +86,35 @@ void addNode(Node* node, int value)
 	}
 }
 
-bool remove(Tree* tree, int const value)
+bool add(Tree* tree, int const  data)
 {
-	if (!exists(tree, value))
+	if (isEmpty(tree))
 	{
-		return false;
+		tree->root = new Node{ data, nullptr, nullptr };
 	}
-	removeRecursion(tree->root, value);
+	else
+	{
+		if (!exists(tree, data))
+		{
+			addNodeRecursive(tree->root, data);
+		}
+		else
+		{
+			return false;
+		}
+	}
 	return true;
+}
+
+int maximum(Node* current)
+{
+	auto* temp = current;
+	temp = temp->leftChild;
+	while (temp->rightChild != nullptr)
+	{
+		temp = temp->rightChild;
+	}
+	return temp->value;
 }
 
 void removeRecursion(Node *&node, int value)
@@ -146,28 +158,27 @@ void removeRecursion(Node *&node, int value)
 	}
 }
 
-int maximum(Node* current)
+bool remove(Tree* tree, int const value)
 {
-	auto* temp = current;
-	temp = temp->leftChild;
-	while (temp->rightChild != nullptr)
+	if (!exists(tree, value))
 	{
-		temp = temp->rightChild;
+		return false;
 	}
-	return temp->value;
+	removeRecursion(tree->root, value);
+	return true;
 }
 
-void deleteTree(Node *current)
+void deleteTreeRecursion(Node *current)
 {
 	if (current != nullptr)
 	{
 		if (current->leftChild != nullptr)
 		{
-			deleteTree(current->leftChild);
+			deleteTreeRecursion(current->leftChild);
 		}
 		if (current->rightChild != nullptr)
 		{
-			deleteTree(current->rightChild);
+			deleteTreeRecursion(current->rightChild);
 		}
 		Node *temp = current;
 		delete temp;
@@ -176,35 +187,55 @@ void deleteTree(Node *current)
 	else return;
 }
 
-void printTreeIncreasing(Node *current)
+void deleteTree(Tree *tree)
+{
+	deleteTreeRecursion(tree->root);
+	delete tree;
+}
+
+void printTreeIncreasingRecursive(Node *current)
 {
 	if (current != nullptr)
 	{
 		if (current->leftChild != nullptr)
 		{
-			printTreeIncreasing(current->leftChild);
+			printTreeIncreasingRecursive(current->leftChild);
 		}
 		cout << current->value << " ";
 		if (current->rightChild)
 		{
-			printTreeIncreasing(current->rightChild);
+			printTreeIncreasingRecursive(current->rightChild);
 		}
 	}
 }
 
-void printTreeDecreasing(Node *current)
+void printTreeDecreasingRecursive(Node *current)
 {
 	if (current != nullptr)
 	{
 		if (current->leftChild != nullptr)
 		{
-			printTreeDecreasing(current->rightChild);
+			printTreeDecreasingRecursive(current->rightChild);
 		}
 		cout << current->value << " ";
 		if (current->rightChild)
 		{
-			printTreeDecreasing(current->leftChild);
+			printTreeDecreasingRecursive(current->leftChild);
 		}
 	}
 }
 
+void printTreeIncreasing(Tree *tree)
+{
+	printTreeIncreasingRecursive(tree->root);
+}
+
+void printTreeDecreasing(Tree *tree)
+{
+	printTreeDecreasingRecursive(tree->root);
+}
+
+Tree *createTree()
+{
+	return new Tree;
+}

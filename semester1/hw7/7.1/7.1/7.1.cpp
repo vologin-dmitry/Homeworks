@@ -16,7 +16,7 @@ int main()
 		return 1;
 	}
 	char choose = ' ';
-	Tree *tree = new Tree;
+	Tree *tree = createTree();
 	while (choose != '0')
 	{
 		cout << "Введите 0, чтобы выйти" << endl;
@@ -61,13 +61,13 @@ int main()
 		}
 		case '4':
 		{
-			printTreeIncreasing(tree->root);
+			printTreeIncreasing(tree);
 			cout << endl;
 			continue;
 		}
 		case '5':
 		{
-			printTreeDecreasing(tree->root);
+			printTreeDecreasing(tree);
 			cout << endl;
 			continue;
 		}
@@ -75,14 +75,13 @@ int main()
 			continue;
 		}
 	}
-	deleteTree(tree->root);
-	delete tree;
+	deleteTree(tree);
 	return 0;
 }
 
 bool tests()
 {
-	Tree *tree = new Tree;
+	Tree *tree = createTree();
 	int adds[]{ 1, 5, -5, -8, -7, 43, -13, 4, -7, -2, -2 };
 	int removes[]{ 1, -8, 43, 5, - 2, 5 };
 	int checks[]{ false, false, true, false, true, false, true, true, true, false, false };
@@ -98,12 +97,10 @@ bool tests()
 	{
 		if (exists(tree, adds[i]) != checks[i])
 		{
-			deleteTree(tree->root);
-			delete tree;
+			deleteTree(tree);
 			return 1;
 		}
 	}
-	deleteTree(tree->root);
-	delete tree;
+	deleteTree(tree);
 	return 0;
 }
