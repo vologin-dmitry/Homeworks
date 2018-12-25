@@ -48,7 +48,7 @@ int getLength(Node const *head)
 	return count;
 }
 
-void clear(Node *head)
+void clear(Node *&head)
 {
 	if (head != nullptr)
 	{

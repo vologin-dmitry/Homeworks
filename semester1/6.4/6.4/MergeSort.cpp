@@ -36,31 +36,15 @@ Node *merge(Node *first, Node *second, char choose)
 	{
 		return first;
 	}
-	if (choose == '1')
+	if (!compare(first, second, choose))
 	{
-		if (getName(first) < getName(second))
-		{
-			setNext(first, merge(getNext(first), second, choose));
-			return first;
-		}
-		else
-		{
-			setNext(second, merge(first, getNext(second), choose));
-			return second;
-		}
+		setNext(first, merge(getNext(first), second, choose));
+		return first;
 	}
-	if (choose == '2')
+	else
 	{
-		if (getNumber(first) < getNumber(second))
-		{
-			setNext(first, merge(getNext(first), second, choose));
-			return first;
-		}
-		else
-		{
-			setNext(second, merge(first, getNext(second), choose));
-			return second;
-		}
+		setNext(second, merge(first, getNext(second), choose));
+		return second;
 	}
 }
 
@@ -69,5 +53,17 @@ void sort(Node *&head, char choose)
 	if (head != nullptr)
 	{
 		head = mergeSort(head, choose);
+	}
+}
+
+bool compare(Node *first, Node *second, char choose)
+{
+	if (choose == '1')
+	{
+		return getName(first) >= getName(second);
+	}
+	if (choose == '2')
+	{
+		return getNumber(first) >= getNumber(second);
 	}
 }

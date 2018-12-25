@@ -29,10 +29,10 @@ int main()
 	char choose = ' ';
 	cout << "Введите 1, чтобы отсортировать по именам\n";
 	cout << "Введите 2, чтобы отсортировать по номерам\n";
-	//cin >> choose;
+	cin >> choose;
 	fillList(head, file);
 	file.close();
-	sort(head, '1');
+	sort(head, choose);
 	printList(head);
 	clear(head);
 }
