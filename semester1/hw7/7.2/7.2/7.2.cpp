@@ -17,8 +17,7 @@ int main()
 		cout << "Что то пошло не так !";
 		return 1;
 	}
-	Tree *tree = new Tree;
-	tree->root = new Node;
+	Tree *tree = createTree();
 	ifstream fileToWork("FileToWork.txt", ios::in);
 	if (!fileToWork.is_open())
 	{
@@ -29,10 +28,9 @@ int main()
 	getline(fileToWork, line);
 	line += '\n';
 	buildTree(line, tree);
-	cout << countTree(tree->root) << endl;
-	printTree(tree->root);
-	deleteTree(tree->root);
-	delete tree;
+	cout << countTree(tree) << endl;
+	printTree(tree);
+	deleteTree(tree);
  }
 
 bool tests()
@@ -47,19 +45,17 @@ bool tests()
 	}
 	for (int i = 0; i < SIZE; i++)
 	{
-		Tree *testTree = new Tree{ new Node };
+		Tree *testTree = createTree();
 		string line = "";
 		getline(TestFile, line);
 		line += '\n';
 		buildTree(line, testTree);
-		if (countTree(testTree->root) != answers[i])
+		if (countTree(testTree) != answers[i])
 		{
-			deleteTree(testTree->root);
-			delete testTree;
+			deleteTree(testTree);
 			return 1;
 		}
-		deleteTree(testTree->root);
-		delete testTree;
+		deleteTree(testTree);
 	}
 	return 0;
 }

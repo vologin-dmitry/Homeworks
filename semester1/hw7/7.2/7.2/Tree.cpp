@@ -4,9 +4,37 @@
 #include <fstream>
 #include <string>
 
-using namespace std;
+struct Node
+{
+	std::string value = "";
+	Node *leftChild = nullptr;
+	Node *rightChild = nullptr;
+	Node *parent = nullptr;
+};
 
-void buildTree(string line, Tree*& tree)
+struct Tree
+{
+	Node *root = nullptr;
+};
+
+Node *nodeFree(Node* node)
+{
+	if (node->value == "")
+	{
+		return node;
+	}
+	if (node->leftChild->value == "")
+	{
+		return node->leftChild;
+	}
+	if (node->rightChild->value == "")
+	{
+		return node->rightChild;
+	}
+	return nullptr;
+}
+
+void buildTree(const std::string &line, Tree* tree)
 {
 	Node *current = tree->root;
 	Node *tripletHead = current;
@@ -51,29 +79,11 @@ void buildTree(string line, Tree*& tree)
 	return;
 }
 
-Node *nodeFree(Node* node)
-{
-	if (node->value == "")
-	{
-		return node;
-	}
-	if (node->leftChild->value == "")
-	{
-		return node->leftChild;
-	}
-	if (node->rightChild->value == "")
-	{
-		return node->rightChild;
-	}
-	return nullptr;
-}
-
-
-int countTree(Node *node)
+int countTreeRecursive(Node *node)
 {
 	if (node->leftChild == nullptr)
 	{
-		return stoi(node->value);
+		return std::stoi(node->value);
 	} 
 	else
 	{
@@ -84,22 +94,22 @@ int countTree(Node *node)
 			{
 			case '+':
 			{
-				return countTree(node->leftChild) + countTree(node->rightChild);
+				return countTreeRecursive(node->leftChild) + countTreeRecursive(node->rightChild);
 				break;
 			}
 			case '-':
 			{
-				return countTree(node->leftChild) - countTree(node->rightChild);
+				return countTreeRecursive(node->leftChild) - countTreeRecursive(node->rightChild);
 				break;
 			}
 			case '*':
 			{
-				return countTree(node->leftChild) * countTree(node->rightChild);
+				return countTreeRecursive(node->leftChild) * countTreeRecursive(node->rightChild);
 				break;
 			}
 			case '/':
 			{
-				return countTree(node->leftChild) / countTree(node->rightChild);
+				return countTreeRecursive(node->leftChild) / countTreeRecursive(node->rightChild);
 				break;
 			}
 			default: 
@@ -111,34 +121,57 @@ int countTree(Node *node)
 	}
 }
 
-void printTree(Node *node)
+void printTreeRecursive(Node *node)
 {
 	if (node->leftChild != nullptr)    //Так как файл корректен, существование левого потомка гарантирует существование правого потомка
 	{
-		cout << "(";
-		cout << ' ' << node->value << ' ';
-		printTree(node->leftChild);
-		printTree(node->rightChild);
-		cout << ")";
+		std::cout << "(";
+		std::cout << ' ' << node->value << ' ';
+		printTreeRecursive(node->leftChild);
+		printTreeRecursive(node->rightChild);
+		std::cout << ")";
 	}
 	else
 	{
-		cout << ' ' << node->value << ' ';
+		std::cout << ' ' << node->value << ' ';
 	}
 }
 
-void deleteTree(Node *&node)
+void deleteTreeRecursive(Node *&node)
 {
 	if (node->leftChild != nullptr)
 	{
-		deleteTree(node->leftChild);
+		deleteTreeRecursive(node->leftChild);
 		node->leftChild = nullptr;
 	}
 	if (node->rightChild != nullptr)
 	{
-		deleteTree(node->rightChild);
+		deleteTreeRecursive(node->rightChild);
 		node->rightChild = nullptr;
 	}
 	delete node;
 	return;
+}
+
+int countTree(Tree *tree)
+{
+	return countTreeRecursive(tree->root);
+}
+
+void printTree(Tree *tree)
+{
+	printTreeRecursive(tree->root);
+}
+
+void deleteTree(Tree *tree)
+{
+	deleteTreeRecursive(tree->root);
+	delete tree;
+}
+
+Tree *createTree()
+{
+	Tree *tree = new Tree;
+	tree->root = new Node;
+	return tree;
 }
