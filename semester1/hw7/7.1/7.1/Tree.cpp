@@ -41,26 +41,12 @@ Node *searchValue(Tree* tree, int value)
 
 bool exists(Tree *tree, int value)
 {
-	if (searchValue(tree, value) != nullptr)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return searchValue(tree, value) != nullptr;
 }
 
 bool isEmpty(Tree *tree)
 {
-	if (tree->root == nullptr)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return tree->root == nullptr;
 }
 
 void addNodeRecursive(Node* node, int value)
@@ -91,19 +77,14 @@ bool add(Tree* tree, int const  data)
 	if (isEmpty(tree))
 	{
 		tree->root = new Node{ data, nullptr, nullptr };
+		return true;
 	}
-	else
+	else if (!exists(tree, data))
 	{
-		if (!exists(tree, data))
-		{
-			addNodeRecursive(tree->root, data);
-		}
-		else
-		{
-			return false;
-		}
+		addNodeRecursive(tree->root, data);
+		return true;
 	}
-	return true;
+	return false;
 }
 
 int maximum(Node* current)
@@ -168,7 +149,7 @@ bool remove(Tree* tree, int const value)
 	return true;
 }
 
-void deleteTreeRecursion(Node *current)
+void deleteTreeRecursion(Node *&current)
 {
 	if (current != nullptr)
 	{
@@ -184,7 +165,6 @@ void deleteTreeRecursion(Node *current)
 		delete temp;
 		current = nullptr;
 	}
-	else return;
 }
 
 void deleteTree(Tree *tree)
