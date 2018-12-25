@@ -1,24 +1,17 @@
 #pragma once
 
-struct StackElement
-{
-	char data = ' ';
-	StackElement *next = nullptr;
-};
-
-struct Stack
-{
-	StackElement *head = nullptr;
-};
+struct Stack;
 
 //Добавить элемент в стэк
-void push(Stack &stack, char data);
+void push(Stack *stack, char data);
 
 //Вынуть элемент из стжка
-char pop(Stack &stack, bool &result);
+char pop(Stack *stack, bool &result);
 
 //Проверить является ли стэк пустным
-bool isEmpty(Stack stack);
+bool isEmpty(Stack *stack);
 
 //Удалить стэк
-void deleteStack(Stack &stack);
+void deleteStack(Stack *stack);
+
+Stack *createStack();

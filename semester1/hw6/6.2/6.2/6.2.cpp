@@ -1,6 +1,5 @@
 ﻿#include "pch.h"
 #include <string>
-#include <string.h>
 #include <iostream>
 #include "Stack.h"
 #include <stdio.h>
@@ -9,7 +8,7 @@
 
 using namespace std;
 
-bool parenthesesCheck(string data, Stack &stack);
+bool parenthesesCheck(string data, Stack *stack);
 bool tests();
 
 int main()
@@ -20,7 +19,7 @@ int main()
 		printf("Что то пошло не так !");
 		return 1;
 	}
-	Stack stack;
+	Stack *stack = createStack();
 	string data = " ";
 	cout << "Введите строку" << endl;
 	getline(cin, data);
@@ -34,10 +33,11 @@ int main()
 		cout << "Баланс скобок не соблюден" << endl;
 	}
 	deleteStack(stack);
+	delete stack;
 	return 0;
 }
 
-bool parenthesesCheck(string data, Stack &stack)
+bool parenthesesCheck(string data, Stack *stack)
 {
 	int i = 0;
 	while (data[i] != '\n')
@@ -58,7 +58,7 @@ bool parenthesesCheck(string data, Stack &stack)
 		}
 		i++;
 	}
-	if (stack.head == NULL)
+	if (isEmpty(stack))
 	{
 		return true;
 	}
@@ -75,13 +75,15 @@ bool tests()
 	bool answers[SIZE]{ true, false, false, true, true };
 	for (int i = 0; i < SIZE; i++)
 	{
-		Stack stack;
+		Stack *stack = createStack();
 		if (parenthesesCheck(datas[i], stack) != answers[i])
 		{
 			deleteStack(stack);
+			delete stack;
 			return true;
 		}
 		deleteStack(stack);
+		delete stack;
 	}
 	return false;
 }
