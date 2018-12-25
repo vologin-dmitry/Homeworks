@@ -2,9 +2,50 @@
 #include "Tree.h"
 #include <iostream>
 
-using namespace std;
+struct Node
+{
+	int height = 0;
+	int key = 0;
+	std::string value = "";
+	Node *leftChild = nullptr;
+	Node *rightChild = nullptr;
+};
 
-void addNode(Node *&node, string data, int key)
+
+struct Tree
+{
+	Node *root = nullptr;
+};
+
+Node *smallRotateLeft(Node *first);
+Node *smallRotateRight(Node *first);
+int getHeight(Node *node);
+int difference(Node *node);
+
+Node *balance(Node *node)
+{
+	node->height = getHeight(node);
+	if (difference(node) > 1)
+	{
+		if (difference(node->leftChild) < 0)
+		{
+			node->leftChild = smallRotateLeft(node->leftChild);
+		}
+		return smallRotateRight(node);
+	}
+	if (difference(node) < -1)
+	{
+		if (difference(node->rightChild) > 0)
+		{
+			node->rightChild = smallRotateRight(node->rightChild);
+		}
+		return smallRotateLeft(node);
+	}
+	node->height = getHeight(node);
+	return node;
+}
+
+void addNodeRecursive(Node *&node, const std::string &data, int key)
 {
 	if (node == nullptr)
 	{
@@ -15,13 +56,13 @@ void addNode(Node *&node, string data, int key)
 	{
 		if (key > node->key)
 		{
-			addNode(node->rightChild, data, key);
+			addNodeRecursive(node->rightChild, data, key);
 		}
 		else
 		{
 			if(key < node->key)
 			{
-				addNode(node->leftChild, data, key);
+				addNodeRecursive(node->leftChild, data, key);
 			}
 			else
 			{
@@ -30,6 +71,23 @@ void addNode(Node *&node, string data, int key)
 		}
 	}
 	node = balance(node);
+}
+
+void addNode(Tree *&tree, const std::string &data, int key)
+{
+	addNodeRecursive(tree->root, data, key);
+}
+
+int height(Node* node)
+{
+	if (node == nullptr)
+	{
+		return 0;
+	}
+	else
+	{
+		return node->height;
+	}
 }
 
 int getHeight(Node *node)
@@ -53,6 +111,11 @@ int getHeight(Node *node)
 			return node->rightChild->height + 1;
 		}
 	}
+}
+
+int difference(Node *node)
+{
+	return height(node->leftChild) - height(node->rightChild);
 }
 
 Node *findNodeByKey(Tree *tree, int key)
@@ -79,7 +142,7 @@ Node *findNodeByKey(Tree *tree, int key)
 	return nullptr;
 }
 
-string findStringByKey(Tree *tree, int key)
+std::string findStringByKey(Tree *tree, int key)
 {
 	Node *temp = findNodeByKey(tree, key);
 	if (temp != nullptr)
@@ -97,7 +160,7 @@ bool exists(Tree *tree, int key)
 	return (findNodeByKey(tree, key) != nullptr);
 }
 
-Node *smallRotateLeft(Node *&first)
+Node *smallRotateLeft(Node *first)
 {
 	Node *second = first->rightChild;
 	first->rightChild = second->leftChild;
@@ -107,7 +170,7 @@ Node *smallRotateLeft(Node *&first)
 	return second;
 }
 
-Node *smallRotateRight(Node *&first)
+Node *smallRotateRight(Node *first)
 {
 	Node *second = first->leftChild;
 	first->leftChild = second->rightChild;
@@ -115,46 +178,6 @@ Node *smallRotateRight(Node *&first)
 	first->height = getHeight(first);
 	second->height = getHeight(second);
 	return second;
-}
-
-Node *balance(Node *node)
-{
-	node->height = getHeight(node);
-	if (difference(node) > 1)
-	{
-		if (difference(node->leftChild) < 0)
-		{
-			node->leftChild = smallRotateLeft(node->leftChild);
-		}
-		return smallRotateRight(node);
-	}
-	if (difference(node) < -1)
-	{
-		if (difference(node->rightChild) > 0)
-		{
-			node->rightChild = smallRotateRight(node->rightChild);
-		}
-		return smallRotateLeft(node);
-	}
-	node->height = getHeight(node);
-	return node;
-}
-
-int height(Node* node)
-{
-	if (node == nullptr)
-	{
-		return 0;
-	}
-	else
-	{
-		return node->height;
-	}
-}
-
-int difference(Node *node)
-{
-	return height(node->leftChild) - height(node->rightChild);
 }
 
 Node *minimum(Node* current)
@@ -168,7 +191,7 @@ Node *minimum(Node* current)
 	return temp;
 }
 
-void remove(Node *&node, int key)
+void removeRecursive(Node *node, int key)
 {
 	if (node == nullptr)
 	{
@@ -176,11 +199,11 @@ void remove(Node *&node, int key)
 	}
 	else if (node->key > key)
 	{
-		remove(node->leftChild, key);
+		removeRecursive(node->leftChild, key);
 	}
 	else if (node->key < key)
 	{
-		remove(node->rightChild, key);
+		removeRecursive(node->rightChild, key);
 	}
 	else
 	{
@@ -206,7 +229,7 @@ void remove(Node *&node, int key)
 		{
 			node->value = minimum(node)->value;
 			node->key = minimum(node)->key;
-			remove(node->rightChild, node->key);
+			removeRecursive(node->rightChild, node->key);
 		}
 
 	}
@@ -216,22 +239,37 @@ void remove(Node *&node, int key)
 	}
 }
 
+void remove(Tree *tree, int key)
+{
+	removeRecursive(tree->root, key);
+}
 
-void deleteTree(Node *current)
+void deleteTreeRecursive(Node *current)
 {
 	if (current != nullptr)
 	{
 		if (current->leftChild != nullptr)
 		{
-			deleteTree(current->leftChild);
+			deleteTreeRecursive(current->leftChild);
 		}
 		if (current->rightChild != nullptr)
 		{
-			deleteTree(current->rightChild);
+			deleteTreeRecursive(current->rightChild);
 		}
 		Node *temp = current;
 		delete temp;
 		current = nullptr;
 	}
 	else return;
+}
+
+void deleteTree(Tree *tree)
+{
+	deleteTreeRecursive(tree->root);
+	delete tree;
+}
+
+Tree *createTree()
+{
+	return new Tree;
 }

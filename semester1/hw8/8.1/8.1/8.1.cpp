@@ -6,6 +6,8 @@
 
 bool tests();
 
+using namespace std;
+
 int main()
 {
 	setlocale(LC_ALL, "russian");
@@ -14,7 +16,7 @@ int main()
 		cout << "Что то пошло не так !";
 		return 1;
 	}
-	Tree *tree = new Tree{};
+	Tree *tree = createTree();
 	char choose = ' ';
 	while (choose != '0')
 	{
@@ -28,7 +30,7 @@ int main()
 		{
 		case '0':
 		{
-			deleteTree(tree->root);
+			deleteTree(tree);
 			continue;
 		}
 		case '1':
@@ -39,7 +41,7 @@ int main()
 			cin >> data;
 			cout << "Введите ключ " << endl;
 			cin >> key;
-			addNode(tree->root, data, key);
+			addNode(tree, data, key);
 			break;
 		}
 		case '2':
@@ -69,41 +71,39 @@ int main()
 		{
 			int key = -1;
 			cin >> key;
-			remove(tree->root, key);
+			remove(tree, key);
 			continue;
 		}
 		}
 	}
-	deleteTree(tree->root);
-	delete tree;
+	deleteTree(tree);
 	return 0;
 }
 
 bool tests()
 {
-	Tree *tree = new Tree;
+	Tree *tree = createTree();
 	int addKeys[]{ 1, 5, -5, -2, -8, -7, 43, -13, 4, -7, -2 };
 	string addValues[]{ "Well", "some", "tests", "value1", "this", "is", "a", "string", "hope", "it", "value2" };
 	int removes[]{ 1, -8, 43, 5, -13, 5 };
 	string checks[]{ "", "", "tests", "value2", "", "it", "", "", "hope", "it", "value2" };
 	for (int i = 0; i < 11; i++)
 	{
-		addNode(tree->root, addValues[i], addKeys[i]);
+		addNode(tree, addValues[i], addKeys[i]);
 	}
 	for (int i = 0; i < 6; i++)
 	{
-		remove(tree->root, removes[i]);
+		remove(tree, removes[i]);
 	}
 	for (int i = 0; i < 11; i++)
 	{
 		if (findStringByKey(tree,addKeys[i]) != checks[i])
 		{
-			deleteTree(tree->root);
-			delete tree;
+			deleteTree(tree);
 			return 1;
 		}
 	}
-	deleteTree(tree->root);
+	deleteTree(tree);
 	delete tree;
 	return 0;
 }
