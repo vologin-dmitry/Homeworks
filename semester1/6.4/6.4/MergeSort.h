@@ -2,4 +2,4 @@
 #include "pch.h"
 #include "List.h"
 
-void sort(List *list, char choose);
+void sort(Node *&head, char choose);

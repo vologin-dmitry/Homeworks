@@ -1,31 +1,32 @@
 #include "pch.h"
 #include "MergeSort.h"
 
-Node *merge(Node *&first, Node *&second, char choose);
 
-Node *mergeSort(Node *&list, char choose)
+Node *merge(Node *first, Node *second, char choose);
+
+Node *mergeSort(Node *list, char choose)
 {
 	Node *firstListHead = list;
 	Node *secondListHead = list;
 	for (int i = 0; i < (getLength(list) / 2) - 1; ++i)
 	{
-		secondListHead = secondListHead->next;
+		secondListHead = getNext(secondListHead);
 	}
 	Node *temp = secondListHead;
-	secondListHead = secondListHead->next;
-	temp->next = nullptr;
-	if (firstListHead->next != nullptr)
+	secondListHead = getNext(secondListHead);
+	setNext(temp, nullptr);
+	if (getNext(firstListHead) != nullptr)
 	{
 		firstListHead = mergeSort(firstListHead, choose);
 	}
-	if (secondListHead->next != nullptr)
+	if (getNext(secondListHead) != nullptr)
 	{
 		secondListHead = mergeSort(secondListHead, choose);
 	}
 	return merge(firstListHead, secondListHead, choose);
 }
 
-Node *merge(Node *&first, Node *&second, char choose)
+Node *merge(Node *first, Node *second, char choose)
 {
 	if (first == nullptr)
 	{
@@ -37,36 +38,36 @@ Node *merge(Node *&first, Node *&second, char choose)
 	}
 	if (choose == '1')
 	{
-		if (first->name < second->name)
+		if (getName(first) < getName(second))
 		{
-			first->next = merge(first->next, second, choose);
+			setNext(first, merge(getNext(first), second, choose));
 			return first;
 		}
 		else
 		{
-			second->next = merge(first, second->next, choose);
+			setNext(second, merge(first, getNext(second), choose));
 			return second;
 		}
 	}
 	if (choose == '2')
 	{
-		if (first->number < second->number)
+		if (getNumber(first) < getNumber(second))
 		{
-			first->next = merge(first->next, second, choose);
+			setNext(first, merge(getNext(first), second, choose));
 			return first;
 		}
 		else
 		{
-			second->next = merge(first, second->next, choose);
+			setNext(second, merge(first, getNext(second), choose));
 			return second;
 		}
 	}
 }
 
-void sort(List *list, char choose)
+void sort(Node *&head, char choose)
 {
-	if (list->head != nullptr)
+	if (head != nullptr)
 	{
-		list->head = mergeSort(list->head, choose);
+		head = mergeSort(head, choose);
 	}
 }

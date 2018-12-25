@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void fillList(List *list, ifstream &file);
+void fillList(Node *&head, ifstream &file);
 bool tests();
 
 int main()
@@ -25,16 +25,16 @@ int main()
 		cout << "Ошибка ! Проверьте наличие входного файла !\n";
 		return 1;
 	}
-	List list;
+	Node *head = createList();
 	char choose = ' ';
 	cout << "Введите 1, чтобы отсортировать по именам\n";
 	cout << "Введите 2, чтобы отсортировать по номерам\n";
-	cin >> choose;
-	fillList(&list, file);
+	//cin >> choose;
+	fillList(head, file);
 	file.close();
-	sort(&list, choose);
-	printList(list);
-	clear(list.head);
+	sort(head, '1');
+	printList(head);
+	clear(head);
 }
 
 bool tests()
@@ -47,30 +47,30 @@ bool tests()
 		return 1;
 	}
 	string answers[2][SIZE]{ { "Bill", "Gherohn", "Joe", "Newbie" , "Thom" }, { "Gherohn", "Thom", "Bill", "Newbie", "Joe" } };
-	List list;
-	fillList(&list, file);
-	sort(&list, '1');
+	Node *head = createList();
+	fillList(head, file);
+	sort(head, '1');
 	for (int j = 0; j < 2; ++j)
 	{
-		Node *current = list.head;
+		Node *current = head;
 		for (int i = 0; i < SIZE; ++i)
 		{
-			if (current->name != answers[j][i])
+			if (getName(current) != answers[j][i])
 			{
-				clear(list.head);
+				clear(head);
 				file.close();
 				return 1;
 			}
-			current = current->next;
+			current = getNext(current);
 		}
-		sort(&list, '2');
+		sort(head, '2');
 	}
-	clear(list.head);
+	clear(head);
 	file.close();
 	return 0;
 }
 
-void fillList(List *list, ifstream &file)
+void fillList(Node *&head, ifstream &file)
 {
 	string temp = "";
 	string temp2 = "";
@@ -78,6 +78,6 @@ void fillList(List *list, ifstream &file)
 	{
 		file >> temp;
 		file >> temp2;
-		addNode(list, temp, temp2);
+		addNode(head, temp, temp2);
 	}
 }
