@@ -18,7 +18,7 @@ void prims(Graph *graph, std::vector<int> &previous, std::vector<int> &keys)
 	const int SIZE = graph->edges.size();
 	const int INF = INT_MAX;
 	previous.resize(SIZE);
-	std::vector <bool> alreadyWas;
+	std::vector<bool> alreadyWas;
 	alreadyWas.resize(SIZE);
 	keys.resize(SIZE);
 	for (int i = 0; i < SIZE; ++i)
@@ -30,7 +30,7 @@ void prims(Graph *graph, std::vector<int> &previous, std::vector<int> &keys)
 	alreadyWas[0] = true;
 	keys[0] = 0;
 	std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, std::greater<std::pair<int, int>>>  queue;
-	queue.push(std::make_pair(0,0));
+	queue.push(std::make_pair(0, 0));
 	while (!queue.empty())
 	{
 		int current = queue.top().second;
@@ -73,4 +73,5 @@ void deleteGraph(Graph *&graph)
 	{
 		graph->edges[i].clear();
 	}
+	delete graph;
 }
