@@ -50,8 +50,8 @@ bool tests()
 	{
 		if (KMPAlgorithm(toSearch[i], texts[i]) != answers[i])
 		{
-			return 1;
+			return true;
 		}
 	}
-	return 0;
+	return false;
 }

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "KMP.h"
 
-void prefixFunc(const std::string line,int prefixes[])
+void prefixFunc(const std::string &line, int prefixes[])
 {
 	int size = line.length();
 	prefixes[0] = 0;
@@ -26,7 +26,7 @@ void prefixFunc(const std::string line,int prefixes[])
 	}
 }
 
-int kmpSearch(const std::string line, const std::string text, const int prefixes[])
+int kmpSearch(const std::string &line, const std::string &text, const int prefixes[])
 {
 	int size = line.length();
 	int textPointer = 0;
@@ -58,7 +58,7 @@ int kmpSearch(const std::string line, const std::string text, const int prefixes
 	}
 }
 
-int KMPAlgorithm(const std::string line, const std::string text)
+int KMPAlgorithm(const std::string &line, const std::string &text)
 {
 	int *prefixes = new int[line.length()];
 	prefixFunc(line, prefixes);
