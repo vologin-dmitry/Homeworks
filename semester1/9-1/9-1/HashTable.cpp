@@ -4,7 +4,7 @@
 
 struct HashTable
 {
-	std::vector<List> buckets;
+	std::vector<List *> buckets;
 };
 
 
@@ -24,6 +24,11 @@ HashTable *createHashTable()
 	HashTable *table = new HashTable;
 	int size = 100;
 	table->buckets.resize(size);
+	size = table->buckets.size();
+	for (int i = 0; i < size; ++i)
+	{
+		table->buckets[i] = createList();
+	}
 	return table;
 }
 
@@ -40,10 +45,7 @@ void clearTable(HashTable *&table)
 	int size = table->buckets.size();
 	for (int i = 0; i < size; ++i)
 	{
-		if (!isEmpty(table->buckets[i]))
-		{
-			clear(table->buckets[i]);
-		}
+		clear(table->buckets[i]);
 	}
 	delete table;
 }
@@ -66,5 +68,5 @@ std::string tableToString(HashTable *table)
 
 List *getBucket(HashTable *table,int number)
 {
-	return &table->buckets[number];
+	return table->buckets[number];
 }

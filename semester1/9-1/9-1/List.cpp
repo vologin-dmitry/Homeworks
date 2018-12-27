@@ -9,13 +9,17 @@ struct Node
 	Node *next = nullptr;
 };
 
-
-void addToList(List &list, const std::string &value)
+struct List
 {
-	Node *current = list.head;
+	Node *head = nullptr;
+};
+
+void addToList(List *list, const std::string &value)
+{
+	Node *current = list->head;
 	if (current == nullptr)
 	{
-		list.head = new Node{ value, 1, nullptr };
+		list->head = new Node{ value, 1, nullptr };
 		return;
 	}
 	while (current->next != nullptr && current->value != value)
@@ -43,12 +47,12 @@ int getLength(List *list)
 	return count;
 }
 
-void clear(List &list)
+void clear(List *list)
 {
-	if (list.head != nullptr)
+	if (list->head != nullptr)
 	{
-		Node *current = list.head;
-		Node *temp = list.head;
+		Node *current = list->head;
+		Node *temp = list->head;
 		while (current != nullptr)
 		{
 			temp = current;
@@ -56,16 +60,17 @@ void clear(List &list)
 			delete temp;
 		}
 	}
+	delete list;
 }
 
-bool isEmpty(List &list)
+bool isEmpty(List *list)
 {
-	return list.head == nullptr;
+	return list->head == nullptr;
 }
 
-std::string listToString(List &list)
+std::string listToString(List *list)
 {
-	Node *current = list.head;
+	Node *current = list->head;
 	std::string answer = "";
 	while (current != nullptr)
 	{
@@ -73,4 +78,9 @@ std::string listToString(List &list)
 		current = current->next;
 	}
 	return answer;
+}
+
+List* createList()
+{
+	return new List{ nullptr };
 }

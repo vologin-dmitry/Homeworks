@@ -22,13 +22,13 @@ int main()
 		cout << "Что то пошло не так";
 		return 1;
 	}
-	HashTable *table = createHashTable();
 	ifstream file("FileToWork.txt", ios::in);
 	if (!file.is_open())
 	{
 		cout << "Файла не существет";
 		return 1;
 	}
+	HashTable *table = createHashTable();
 	countWords(table, file);
 	cout << tableToString(table);
 	statistic(table);
@@ -53,7 +53,7 @@ int notEmptyBuckets(HashTable *table)
 	int size = getTableSize(table);
 	for (int i = 0; i < size; ++i)
 	{
-		if (!isEmpty(*getBucket(table, i)))
+		if (!isEmpty(getBucket(table, i)))
 		{
 			++count;
 		}
@@ -108,9 +108,9 @@ bool tests()
 	{
 		clearTable(test);
 		file.close();
-		return 1;
+		return true;
 	}
 	file.close();
 	clearTable(test);
-	return 0;
+	return false;
 }
