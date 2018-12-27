@@ -2,6 +2,18 @@
 #include "HashTable.h"
 #include "List.h"
 
+struct Node
+{
+	std::string value = "";
+	int count = 1;
+	Node *next = nullptr;
+};
+
+struct List
+{
+	Node *head = nullptr;
+};
+
 int hashFunction(std::string const & str)
 {
 	int sum = 0;
@@ -13,53 +25,51 @@ int hashFunction(std::string const & str)
 	return sum;
 }
 
-void constructor(HashTable &table)
+HashTable *createHashTable()
 {
+	HashTable *table = new HashTable;
 	int size = 100;
-	table.buckets.resize(size);
+	table->buckets.resize(size);
+	return table;
 }
 
-Node* findNode(HashTable &table, std::string const &str)
+
+void add(HashTable *table, std::string const & toAdd)
 {
-	int hash = abs((int)(hashFunction(str) % table.buckets.size()));
-	Node *current = table.buckets[hash].head;
-	int size = getLength(table.buckets[hash].head);
+	int hash = abs((int)(hashFunction(toAdd) % getTableSize(table)));
+	addToList(table->buckets[hash], toAdd);
+}
+
+
+void clearTable(HashTable *&table)
+{
+	int size = table->buckets.size();
 	for (int i = 0; i < size; ++i)
 	{
-		if (current->value == str)
+		if (!isEmpty(table->buckets[i]))
 		{
-			return current;
+			clear(table->buckets[i]);
 		}
-		else
-		{
-			current = current->next;
-		}
-	}
-	return nullptr;
-}
-
-void add(HashTable &table, std::string const & toAdd)
-{
-	Node *temp = findNode(table, toAdd);
-	if (temp == nullptr)
-	{
-		int hash = abs((int)(hashFunction(toAdd) % table.buckets.size()));
-		addNode(&table.buckets[hash], toAdd);
-	}
-	else
-	{
-		++(temp->count);
 	}
 }
 
-void clearTable(HashTable &table)
+int getTableSize(HashTable *table)
 {
-	int size = table.buckets.size();
+	return table->buckets.size();
+}
+
+std::string tableToString(HashTable *table)
+{
+	std::string answer = "";
+	int size = getTableSize(table);
 	for (int i = 0; i < size; ++i)
 	{
-		if (!isEmpty(table.buckets[i]))
-		{
-			clear(table.buckets[i].head);
-		}
+		answer += listToString(table->buckets[i]);
 	}
+	return answer;
+}
+
+List *getBucket(HashTable *table,int number)
+{
+	return &table->buckets[number];
 }
