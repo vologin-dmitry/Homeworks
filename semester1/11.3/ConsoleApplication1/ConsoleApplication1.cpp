@@ -37,7 +37,6 @@ int main()
 	cout << "Рёбра остовного дерева :\n";
 	cout << searchMST(graph);
 	deleteGraph(graph);
-	delete graph;
 }
 
 bool tests()
@@ -55,10 +54,8 @@ bool tests()
 	if (searchMST(graph) != "1 0\n2 1\n3 2\n4 3\n")
 	{
 		deleteGraph(graph);
-		delete graph;
-		return 1;
+		return true;
 	}
 	deleteGraph(graph);
-	delete graph;
-	return 0;
+	return false;
 }
