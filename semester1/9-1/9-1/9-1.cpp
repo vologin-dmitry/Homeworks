@@ -100,10 +100,11 @@ void statistic(HashTable *table)
 bool tests()
 {
 	HashTable *test = createHashTable();
-	string answer = "проверяет\t2\nДля\t1\nзадача\t1\nнаписать\t1\nзадачи\t1\nне\t1\nзадачу\t1\nнужно\t1\nтест\t3\n";
+	string answer = "нужно\t1\nтест\t3\nзадачу\t1\nне\t1\nзадачи\t1\nнаписать\t1\nзадача\t1\nДля\t1\nпроверяет\t2\n";
 	ifstream file("FileToTest.txt", ios::in);
 	countWords(test, file);
-	if (hashToString(test) != answer || allListSizeSum(test) != 9 || maxListSize(test) != 2)
+	string mm = tableToString(test);
+	if (tableToString(test) != answer || allListSizeSum(test) != 9 || maxListSize(test) != 2)
 	{
 		clearTable(test);
 		file.close();

@@ -2,17 +2,11 @@
 #include "HashTable.h"
 #include "List.h"
 
-struct Node
+struct HashTable
 {
-	std::string value = "";
-	int count = 1;
-	Node *next = nullptr;
+	std::vector<List> buckets;
 };
 
-struct List
-{
-	Node *head = nullptr;
-};
 
 int hashFunction(std::string const & str)
 {
@@ -34,7 +28,7 @@ HashTable *createHashTable()
 }
 
 
-void add(HashTable *table, std::string const & toAdd)
+void add(HashTable *&table, std::string const & toAdd)
 {
 	int hash = abs((int)(hashFunction(toAdd) % getTableSize(table)));
 	addToList(table->buckets[hash], toAdd);
@@ -51,6 +45,7 @@ void clearTable(HashTable *&table)
 			clear(table->buckets[i]);
 		}
 	}
+	delete table;
 }
 
 int getTableSize(HashTable *table)

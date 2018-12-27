@@ -9,27 +9,26 @@ struct Node
 	Node *next = nullptr;
 };
 
-struct List
-{
-	Node *head = nullptr;
-};
 
 void addToList(List &list, const std::string &value)
 {
 	Node *current = list.head;
-	if (current != nullptr)
+	if (current == nullptr)
 	{
-		while (current->next != nullptr && current->value != value)
-		{
-			current = current->next;
-		}
-		if (current->value == value)
-		{
-			++current->count;
-			return;
-		}
-		current->next = new Node{ value, 1, nullptr };
+		list.head = new Node{ value, 1, nullptr };
+		return;
 	}
+	while (current->next != nullptr && current->value != value)
+	{
+		current = current->next;
+	}
+	if (current->value == value)
+	{
+		++current->count;
+		return;
+	}
+	current->next = new Node{ value, 1, nullptr };
+	return;
 }
 
 int getLength(List *list)
@@ -70,7 +69,8 @@ std::string listToString(List &list)
 	std::string answer = "";
 	while (current != nullptr)
 	{
-		answer += " " + current->value;
+		answer += current->value + '\t' + std::to_string(current->count) + '\n';
+		current = current->next;
 	}
 	return answer;
 }

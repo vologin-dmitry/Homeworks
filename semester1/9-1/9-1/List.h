@@ -2,9 +2,11 @@
 #include "pch.h"
 #include <string>
 
+struct Node;
+
 struct List
 {
-
+	Node *head = nullptr;
 };
 
 void addToList(List &list, const std::string &value);
