@@ -7,8 +7,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             Invitation();
-            int choose;
-            choose = Convert.ToInt32(Console.ReadLine());
+            int choose = Convert.ToInt32(Console.ReadLine());
             switch (choose)
             {
                 case 1:
@@ -53,26 +52,25 @@ namespace ConsoleApp1
 
         static int IterativeFibonacci(int data)
         {
-            int temp1 = 0;
-            int temp2 = 0;
+            int tempPrevious = 0;
+            int tempNext = 0;
             int answer = 1;
-            for (int i = 1; ; i++)
+            var i = 1;
+            while ( i < data)
             {
-                if (i == data)
-                {
-                    return answer;
-                }
-                temp1 = temp2;
-                temp2 = answer;
-                answer = temp1 + temp2;
+                tempPrevious = tempNext;
+                tempNext = answer;
+                answer = tempNext + tempPrevious;
+                ++i;
             }
+            return answer;
         }
 
         static void Fibonacci()
         {
             for (int i = 1; i < 47; i++)
             {
-                Console.Write(Convert.ToString(IterativeFibonacci(i)) + " ");
+                Console.Write($"{IterativeFibonacci(i)} ");
             }
         }
 
@@ -82,7 +80,7 @@ namespace ConsoleApp1
             {
                 for (int j = i + 1; j < array.Length; ++j)
                 {
-                    if (Convert.ToInt32(array[j]) < Convert.ToInt32(array[i]))
+                    if ((array[j]) < (array[i]))
                     {
                         int temp = array[j];
                         array[j] = array[i];
@@ -101,7 +99,7 @@ namespace ConsoleApp1
 
         static int[] CreateAndFillArray(int length)
         {
-            int[] array = new int[length];
+            var array = new int[length];
             var rnd = new Random();
             for (int i = 0; i < length; ++i)
             {
@@ -112,9 +110,9 @@ namespace ConsoleApp1
 
         static void PrintArray(int[] array)
         {
-            for (int i = 0; i < array.Length; ++i)
+            foreach (int element in array)
             {
-                Console.Write(Convert.ToString(array[i]) + " ");
+                Console.Write($"{element} ");
             }
         }
     }
