@@ -1,14 +1,13 @@
 ﻿using System;
 
-namespace ConsoleApp1
+namespace FourthAndFifth
 {
     class Program
     {
         static void Main(string[] args)
         {
             Invitation();
-            int choose;
-            choose = Convert.ToInt32(Console.ReadLine());
+            int choose = Convert.ToInt32(Console.ReadLine());
             if (choose == 1)
             {
                 Console.WriteLine("Введите размер массива");
@@ -27,8 +26,8 @@ namespace ConsoleApp1
             else
             {
                 Console.WriteLine("Введите высоту и длину массива");
-                string dimentions = Console.ReadLine();
-                string[] size = dimentions.Split(' ');
+                string dimensions = Console.ReadLine();
+                string[] size = dimensions.Split(' ');
                 int[,] data = CreateAndFillArray(Convert.ToInt32(size[0]), Convert.ToInt32(size[1]));
                 PrintArray(data);
                 ArraySort(data);
@@ -49,24 +48,24 @@ namespace ConsoleApp1
             }
             if (jump == length / 2)
             {
-                Console.Write("{0} ", array[jump, jump]);
+                Console.Write($"{array[jump, jump]} ");
                 return;
             }
             for (int i = length - jump - 2; i > jump; --i)
             {
-                Console.Write("{0} ", Convert.ToString(array[i, jump]));
+                Console.Write($"{Convert.ToString(array[i, jump])} ");
             }
             for (int i = jump; i < length - 1 - jump; ++i)
             {
-                Console.Write("{0} ", Convert.ToString(array[jump, i]));
+                Console.Write($"{Convert.ToString(array[jump, i])} ");
             }
             for (int i = jump; i < length - 1 - jump; ++i)
             {
-                Console.Write("{0} ", Convert.ToString(array[i, length - jump - 1]));
+                Console.Write($"{Convert.ToString(array[i, length - jump - 1])} ");
             }
             for (int i = length - 1 - jump; i >= jump; --i)
             {
-                Console.Write("{0} ", Convert.ToString(array[length - jump - 1, i]));
+                Console.Write($"{Convert.ToString(array[length - jump - 1, i])} ");
             }
         }
 
@@ -120,7 +119,7 @@ namespace ConsoleApp1
             {
                 for (int j = 0; j < array.GetLength(1); ++j)
                 {
-                    Console.Write(Convert.ToString(array[i, j]) + " ");
+                    Console.Write($"{(array[i, j])} ");
                 }
                 Console.WriteLine();
             }

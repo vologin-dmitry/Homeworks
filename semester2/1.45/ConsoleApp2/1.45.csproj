@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="1.45.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
