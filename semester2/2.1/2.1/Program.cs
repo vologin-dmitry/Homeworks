@@ -65,6 +65,7 @@ namespace LinkedList
                             break;
                         }
                 }
+                list.Clear();
             }
         }
     }

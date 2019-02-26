@@ -130,5 +130,12 @@ namespace LinkedList
             }
             return current;
         }
+
+        public void Clear()
+        {
+            head = null;
+            size = 0;
+            tail = null;
+        }
     }
 }
