@@ -2,7 +2,7 @@
 
 namespace LinkedList
 {
-    class LinkedList
+    class List
     {
         private class Node
         {
@@ -13,9 +13,10 @@ namespace LinkedList
             {
             }
 
-            public Node(string data)
+            public Node(string data, Node next)
             {
-                data = this.data;
+                this.data = data;
+                this.next = next;
             }
         }
 
@@ -33,25 +34,31 @@ namespace LinkedList
             {
                 return false;
             }
+            if (size == 0)
+            {
+                ++size;
+                tail = head = new Node(data, null);
+                return true;
+            }
             if (position == size + 1)
             {
                 ++size;
-                tail.next = new Node(data);
+                tail.next = new Node(data, null);
                 tail = tail.next;
                 return true;
             }
             if (position == 1)
             {
                 ++size;
-                head = new Node(data);
+                head = new Node(data, head);
+                return true;
             }
             Node current = head;
             for (int i = 1; i != position - 1; ++i)
             {
                 current = current.next;
             }
-            Node newNode = new Node(data);
-            newNode = current.next;
+            Node newNode = new Node(data, current.next);
             current.next = newNode;
             ++size;
             return true;
@@ -97,6 +104,10 @@ namespace LinkedList
 
         public bool SetDataOn(string data, int position)
         {
+            if (position > size || position < 0)
+            {
+                return false;
+            }
             Node current = GetNode(position);
             if (current == null)
             {
@@ -110,10 +121,10 @@ namespace LinkedList
         {
             if (position < 1 || position > size)
             {
-                return null
+                return null;
             }
             Node current = head;
-            for (int i = 0; i != position; ++i)
+            for (int i = 1; i != position; ++i)
             {
                 current = current.next;
             }
