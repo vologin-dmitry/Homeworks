@@ -45,20 +45,79 @@ namespace LinkedList
                 ++size;
                 head = new Node(data);
             }
-            int i = 0;
             Node current = head;
-            Node NewNode = new Node(data);
-            while (i < position - 1)
+            for (int i = 1; i != position - 1; ++i)
             {
                 current = current.next;
-                ++i;
             }
-            NewNode.next = current.next;
-            current.next = NewNode;
+            Node newNode = new Node(data);
+            newNode = current.next;
+            current.next = newNode;
             ++size;
             return true;
         }
 
-        public 
+        public bool Delete(int position)
+        {
+            if (position < 1 || position > size)
+            {
+                return false;
+            }
+            if (size == 1)
+            {
+                head = tail = null;
+                --size;
+                return true;
+            }
+            if (position == 1)
+            {
+                --size;
+                head = head.next;
+                return true;
+            }
+            Node current = head;
+            for (int i = 1; i != position - 1; ++i)
+            {
+                current = current.next;
+            }
+            current.next = current.next.next;
+            --size;
+            return false;
+        }
+
+        public string GetDataOn(int position)
+        {
+            Node current = GetNode(position);
+            if (current == null)
+            {
+                return $"Ошибка, проверьте корректность данных";
+            }
+            return current.data;
+        }
+
+        public bool SetDataOn(string data, int position)
+        {
+            Node current = GetNode(position);
+            if (current == null)
+            {
+                return false;
+            }
+            current.data = data;
+            return true;
+        }
+
+        private Node GetNode(int position)
+        {
+            if (position < 1 || position > size)
+            {
+                return null
+            }
+            Node current = head;
+            for (int i = 0; i != position; ++i)
+            {
+                current = current.next;
+            }
+            return current;
+        }
     }
 }
