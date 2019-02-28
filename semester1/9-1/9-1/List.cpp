@@ -2,24 +2,42 @@
 #include "List.h"
 #include <iostream>
 
-void addNode(List *list, std::string value)
+struct Node
 {
-	Node * newElement = new Node{ value, 1, nullptr };
-	if (list->head == nullptr)
+	std::string value = "";
+	int count = 1;
+	Node *next = nullptr;
+};
+
+struct List
+{
+	Node *head = nullptr;
+};
+
+void addToList(List *list, const std::string &value)
+{
+	Node *current = list->head;
+	if (current == nullptr)
 	{
-		list->head = newElement;
+		list->head = new Node{ value, 1, nullptr };
 		return;
 	}
-	Node *current = list->head;
-	while (current->next != nullptr)
+	while (current->next != nullptr && current->value != value)
 	{
 		current = current->next;
 	}
-	current->next = newElement;
+	if (current->value == value)
+	{
+		++current->count;
+		return;
+	}
+	current->next = new Node{ value, 1, nullptr };
+	return;
 }
 
-int getLength(Node *current)
+int getLength(List *list)
 {
+	Node *current = list->head;
 	int count = 0;
 	while (current != nullptr)
 	{
@@ -29,21 +47,40 @@ int getLength(Node *current)
 	return count;
 }
 
-void clear(Node *&head)
+void clear(List *list)
 {
-	if (head != nullptr)
+	if (list->head != nullptr)
 	{
-		Node *temp = head;
-		while (head != nullptr)
+		Node *current = list->head;
+		Node *temp = list->head;
+		while (current != nullptr)
 		{
-			temp = head;
-			head = head->next;
+			temp = current;
+			current = current->next;
 			delete temp;
 		}
 	}
+	delete list;
 }
 
-bool isEmpty(List list)
+bool isEmpty(List *list)
 {
-	return list.head == nullptr;
+	return list->head == nullptr;
+}
+
+std::string listToString(List *list)
+{
+	Node *current = list->head;
+	std::string answer = "";
+	while (current != nullptr)
+	{
+		answer += current->value + '\t' + std::to_string(current->count) + '\n';
+		current = current->next;
+	}
+	return answer;
+}
+
+List* createList()
+{
+	return new List{ nullptr };
 }
