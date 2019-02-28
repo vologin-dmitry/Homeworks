@@ -24,14 +24,10 @@ namespace Table
             return Math.Abs(data.GetHashCode()) % MAX;
         }
 
-        public bool Add(string data)
+        public void Add(string data)
         {
             int hash = HashCode(data);
-            if (!MyTable[hash].Add(data, MyTable[hash].GetSize() + 1))
-            {
-                return false;
-            }
-            return true;
+            MyTable[hash].Add(data, MyTable[hash].GetSize() + 1);
         }
 
         public bool Delete(string data)
@@ -51,10 +47,18 @@ namespace Table
             return (GetPosition(data, HashCode(data)) != -1);
         }
 
+        public void Clear()
+        {
+            for (int i = 0; i < MAX; ++i)
+            {
+                MyTable[i] = null;
+            }
+        }
+
         private int GetPosition(string data, int hash)
         {
             int size = MyTable[hash].GetSize();
-            for (int i = 1; i < size; ++i)
+            for (int i = 1; i <= size; ++i)
             {
                 if (MyTable[hash].GetDataOn(i) == data)
                 {
