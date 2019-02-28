@@ -330,3 +330,7 @@ ASALocalRun/
 .mfractor/
 .user
 .filters
+#This is mine and this is now
+.bin/
+.obj/
+.Properties/
