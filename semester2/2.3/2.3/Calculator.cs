@@ -13,6 +13,7 @@ namespace Calculator
                 {
                     if (myStack.GetSize() < 2)
                     {
+                        Console.WriteLine("Произошла ошибка ! Проверьте правильность введённых данных");
                         return -1;
                     }
                     DoingThings(value, myStack);
@@ -25,6 +26,7 @@ namespace Calculator
             }
             if (myStack.GetSize() == 0)
             {
+                Console.WriteLine("Произошла ошибка ! Проверьте правильность введённых данных");
                 return -1;
             }
             return Convert.ToInt32(myStack.Pop());
@@ -70,6 +72,10 @@ namespace Calculator
                     }
                 case "/":
                     {
+                        if (second == 0)
+                        {
+                            Console.WriteLine("Ошибка ! На ноль делить нельзя");
+                        }
                         myStack.Push(Convert.ToString(first / second));
                         break;
                     }
