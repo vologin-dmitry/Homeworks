@@ -2,12 +2,13 @@
 
 namespace LinkedList
 {
-    class List
+    public class List
     {
         private class Node
         {
-            internal string data = "";
-            internal Node next = null;
+            internal string Data { get; set; }
+
+            internal Node Next { get; set; }
 
             public Node()
             {
@@ -15,8 +16,8 @@ namespace LinkedList
 
             public Node(string data, Node next)
             {
-                this.data = data;
-                this.next = next;
+                Data = data;
+                Next = next;
             }
         }
 
@@ -37,14 +38,15 @@ namespace LinkedList
             if (size == 0)
             {
                 ++size;
-                tail = head = new Node(data, null);
+                tail = new Node(data, null);
+                head = new Node(data, null);
                 return true;
             }
             if (position == size + 1)
             {
                 ++size;
-                tail.next = new Node(data, null);
-                tail = tail.next;
+                tail.Next = new Node(data, null);
+                tail = tail.Next;
                 return true;
             }
             if (position == 1)
@@ -56,10 +58,10 @@ namespace LinkedList
             Node current = head;
             for (int i = 1; i != position - 1; ++i)
             {
-                current = current.next;
+                current = current.Next;
             }
-            Node newNode = new Node(data, current.next);
-            current.next = newNode;
+            var newNode = new Node(data, current.Next);
+            current.Next = newNode;
             ++size;
             return true;
         }
@@ -72,22 +74,23 @@ namespace LinkedList
             }
             if (size == 1)
             {
-                head = tail = null;
+                head = null;
+                tail = null;
                 --size;
                 return true;
             }
             if (position == 1)
             {
                 --size;
-                head = head.next;
+                head = head.Next;
                 return true;
             }
             Node current = head;
             for (int i = 1; i != position - 1; ++i)
             {
-                current = current.next;
+                current = current.Next;
             }
-            current.next = current.next.next;
+            current.Next = current.Next.Next;
             --size;
             return false;
         }
@@ -99,7 +102,7 @@ namespace LinkedList
             {
                 return $"Ошибка, проверьте корректность данных";
             }
-            return current.data;
+            return current.Data;
         }
 
         public bool SetDataOn(string data, int position)
@@ -113,7 +116,7 @@ namespace LinkedList
             {
                 return false;
             }
-            current.data = data;
+            current.Data = data;
             return true;
         }
 
@@ -126,7 +129,7 @@ namespace LinkedList
             Node current = head;
             for (int i = 1; i != position; ++i)
             {
-                current = current.next;
+                current = current.Next;
             }
             return current;
         }
