@@ -2,7 +2,7 @@ using System;
 
  namespace LinkedList
 {
-    class List
+    public class List
     {
         private class Node
         {
@@ -20,7 +20,7 @@ using System;
             }
         }
 
-         private Node head = null;
+        private Node head = null;
         private Node tail = null;
         private int size = 0;
 
@@ -37,7 +37,8 @@ using System;
             if (size == 0)
             {
                 ++size;
-                tail = head = new Node(data, null);
+                tail = new Node(data, null);
+                head = new Node(data, null);
                 return true;
             }
             if (position == size + 1)
@@ -58,7 +59,7 @@ using System;
             {
                 current = current.next;
             }
-            Node newNode = new Node(data, current.next);
+            var newNode = new Node(data, current.next);
             current.next = newNode;
             ++size;
             return true;
@@ -72,7 +73,8 @@ using System;
             }
             if (size == 1)
             {
-                head = tail = null;
+                head = null;
+                tail = null;
                 --size;
                 return true;
             }
