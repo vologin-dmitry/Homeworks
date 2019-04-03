@@ -1,17 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
- namespace Table
+namespace Table
 {
-    class HashTable
+    public class HashTable
     {
-        const int MAX = 100;
-        LinkedList.List[] MyTable = new LinkedList.List[MAX];
+        private const int MAX = 100;
+        private LinkedList.List[] MyTable = new LinkedList.List[MAX];
 
-         public HashTable()
+        public HashTable()
         {
             for (int i = 0; i < MAX; ++i)
             {
@@ -19,18 +15,18 @@ using System.Threading.Tasks;
             }
         }
 
-         private int HashCode(string data)
+        private int HashCode(string data)
         {
             return Math.Abs(data.GetHashCode()) % MAX;
         }
 
-         public void Add(string data)
+        public void Add(string data)
         {
             int hash = HashCode(data);
             MyTable[hash].Add(data, MyTable[hash].GetSize() + 1);
         }
 
-         public bool Delete(string data)
+        public bool Delete(string data)
         {
             int hash = HashCode(data);
             int position = GetPosition(data, hash);
@@ -42,12 +38,12 @@ using System.Threading.Tasks;
             return true;
         }
 
-         public bool Exists(string data)
+        public bool Exists(string data)
         {
             return (GetPosition(data, HashCode(data)) != -1);
         }
 
-         public void Clear()
+        public void Clear()
         {
             for (int i = 0; i < MAX; ++i)
             {
@@ -55,7 +51,7 @@ using System.Threading.Tasks;
             }
         }
 
-         private int GetPosition(string data, int hash)
+        private int GetPosition(string data, int hash)
         {
             int size = MyTable[hash].GetSize();
             for (int i = 1; i <= size; ++i)

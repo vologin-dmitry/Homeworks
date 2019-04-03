@@ -6,7 +6,7 @@
     {
         static void Main(string[] args)
         {
-            var Table = new HashTable();
+            var table = new HashTable();
             string choose = "-1";
             while (choose != "0")
             {
@@ -21,13 +21,13 @@
                     case "1":
                         {
                             Console.WriteLine("Введите значение");
-                            Table.Add(Console.ReadLine());
+                            table.Add(Console.ReadLine());
                             break;
                         }
                     case "2":
                         {
                             Console.WriteLine("Введите значение для удаления");
-                            if (!Table.Delete(Console.ReadLine()))
+                            if (!table.Delete(Console.ReadLine()))
                             {
                                 Console.WriteLine("Ошибка ! Проверьте правильность входных данных");
                             }
@@ -36,7 +36,7 @@
                     case "3":
                         {
                             Console.WriteLine("Введите значение для проверки");
-                            if (Table.Exists(Console.ReadLine()))
+                            if (table.Exists(Console.ReadLine()))
                             {
                                 Console.WriteLine("Значение есть в таблице");
                             }
@@ -48,7 +48,7 @@
                         }
                 }
             }
-            Table.Clear();
+            table.Clear();
         }
     }
 } 

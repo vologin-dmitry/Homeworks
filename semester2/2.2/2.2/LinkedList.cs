@@ -1,22 +1,23 @@
-using System;
+ï»¿using System;
 
- namespace LinkedList
+namespace LinkedList
 {
     public class List
     {
         private class Node
         {
-            internal string data = "";
-            internal Node next = null;
+            internal string Data { get; set; }
 
-             public Node()
+            internal Node Next { get; set; }
+
+            public Node()
             {
             }
 
-             public Node(string data, Node next)
+            public Node(string data, Node next)
             {
-                this.data = data;
-                this.next = next;
+                Data = data;
+                Next = next;
             }
         }
 
@@ -24,11 +25,11 @@ using System;
         private Node tail = null;
         private int size = 0;
 
-         public bool IsEmpty() => size == 0;
+        public bool IsEmpty() => size == 0;
 
-         public int GetSize() => size;
+        public int GetSize() => size;
 
-         public bool Add(string data, int position)
+        public bool Add(string data, int position)
         {
             if (position > size + 1 || position < 1)
             {
@@ -44,8 +45,8 @@ using System;
             if (position == size + 1)
             {
                 ++size;
-                tail.next = new Node(data, null);
-                tail = tail.next;
+                tail.Next = new Node(data, null);
+                tail = tail.Next;
                 return true;
             }
             if (position == 1)
@@ -57,15 +58,15 @@ using System;
             Node current = head;
             for (int i = 1; i != position - 1; ++i)
             {
-                current = current.next;
+                current = current.Next;
             }
-            var newNode = new Node(data, current.next);
-            current.next = newNode;
+            var newNode = new Node(data, current.Next);
+            current.Next = newNode;
             ++size;
             return true;
         }
 
-         public bool Delete(int position)
+        public bool Delete(int position)
         {
             if (position < 1 || position > size)
             {
@@ -81,30 +82,30 @@ using System;
             if (position == 1)
             {
                 --size;
-                head = head.next;
+                head = head.Next;
                 return true;
             }
             Node current = head;
             for (int i = 1; i != position - 1; ++i)
             {
-                current = current.next;
+                current = current.Next;
             }
-            current.next = current.next.next;
+            current.Next = current.Next.Next;
             --size;
             return false;
         }
 
-         public string GetDataOn(int position)
+        public string GetDataOn(int position)
         {
             Node current = GetNode(position);
             if (current == null)
             {
-                return $"Îøèáêà, ïðîâåðüòå êîððåêòíîñòü äàííûõ";
+                return $"ÐžÑˆÐ¸Ð±ÐºÐ°, Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑŒÑ‚Ðµ ÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð¾ÑÑ‚ÑŒ Ð´Ð°Ð½Ð½Ñ‹Ñ…";
             }
-            return current.data;
+            return current.Data;
         }
 
-         public bool SetDataOn(string data, int position)
+        public bool SetDataOn(string data, int position)
         {
             if (position > size || position < 0)
             {
@@ -115,11 +116,11 @@ using System;
             {
                 return false;
             }
-            current.data = data;
+            current.Data = data;
             return true;
         }
 
-         private Node GetNode(int position)
+        private Node GetNode(int position)
         {
             if (position < 1 || position > size)
             {
@@ -128,12 +129,12 @@ using System;
             Node current = head;
             for (int i = 1; i != position; ++i)
             {
-                current = current.next;
+                current = current.Next;
             }
             return current;
         }
 
-         public void Clear()
+        public void Clear()
         {
             head = null;
             size = 0;
