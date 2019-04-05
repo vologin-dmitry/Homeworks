@@ -2,7 +2,7 @@
 
 namespace Calculator
 {
-    interface IStack
+    public interface IStack
     {
         void Push(string data);
 

@@ -2,7 +2,7 @@
 
 namespace Calculator
 {
-    class StackOnArray : IStack
+    public class StackOnArray : IStack
     {
         private const int MAX = 100;
         private string[] stack = new string[MAX];

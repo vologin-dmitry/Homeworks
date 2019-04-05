@@ -2,20 +2,19 @@
 
 namespace Calculator
 {
-    class Calculator
+    public class Calculator
     {
         public int Count(string data, IStack myStack)
         {
             string[] dataArray = data.Split(' ');
             foreach (var value in dataArray)
             {
+                if ((!IsDigit(value) && !IsOperator(value)) || ((IsOperator(value) && myStack.GetSize() < 2)))
+                {
+                    throw new ArgumentException("Error ! Please check input data");
+                }
                 if (IsOperator(value))
                 {
-                    if (myStack.GetSize() < 2)
-                    {
-                        Console.WriteLine("Произошла ошибка ! Проверьте правильность введённых данных");
-                        return -1;
-                    }
                     DoingThings(value, myStack);
                     continue;
                 }
@@ -24,10 +23,9 @@ namespace Calculator
                     myStack.Push(value);
                 }
             }
-            if (myStack.GetSize() == 0)
+            if (myStack.GetSize() != 1)
             {
-                Console.WriteLine("Произошла ошибка ! Проверьте правильность введённых данных");
-                return -1;
+                throw new ArgumentException("Error ! Please check input data");
             }
             return Convert.ToInt32(myStack.Pop());
         }
@@ -39,9 +37,10 @@ namespace Calculator
 
         private static bool IsDigit(string value)
         {
+
             foreach (char letter in value)
             {
-                if (letter - '0' > 9 || letter - '0' < 0)
+                if ((letter - '0' > 9 || letter - '0' < 0) && value[0] != '-')
                 {
                     return false;
                 }
@@ -74,7 +73,7 @@ namespace Calculator
                     {
                         if (second == 0)
                         {
-                            Console.WriteLine("Ошибка ! На ноль делить нельзя");
+                            throw new DivideByZeroException("Error ! Check your input data");
                         }
                         myStack.Push(Convert.ToString(first / second));
                         break;

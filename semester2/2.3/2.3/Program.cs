@@ -20,7 +20,7 @@ namespace Calculator
             }
             if (choose == 2)
             {
-                var stack = new StackOnArray();
+                var stack = new StackOnList();
                 Console.WriteLine(calculator.Count(toCount, stack));
                 stack.Clear();
             }

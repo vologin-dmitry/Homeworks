@@ -2,7 +2,7 @@
 
 namespace Calculator
 {
-    class StackOnList : IStack
+    public class StackOnList : IStack
     {
         private StackElement end = null;
         private int size = 0;
