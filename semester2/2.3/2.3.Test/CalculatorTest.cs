@@ -163,6 +163,7 @@ namespace CalculatorTest
 
 
 
+
         private void Sum1and1Test(IStack stack)
         {
             Assert.AreEqual(2, calculator.Count("1 1 +", stack));
