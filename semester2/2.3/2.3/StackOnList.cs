@@ -32,6 +32,10 @@ namespace Calculator
 
         public string Pop()
         {
+            if (size <= 0)
+            {
+                throw new IndexOutOfRangeException();
+            }
             string toReturn = end.data;
             end = end.previous;
             --size;

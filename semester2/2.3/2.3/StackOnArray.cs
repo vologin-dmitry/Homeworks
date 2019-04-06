@@ -16,6 +16,10 @@ namespace Calculator
 
         public string Pop()
         {
+            if (size <= 0)
+            {
+                throw new IndexOutOfRangeException();
+            }
             --size;
             return stack[size];
         }

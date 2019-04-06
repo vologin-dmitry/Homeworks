@@ -7,7 +7,7 @@ namespace Calculator
         static void Main(string[] args)
         {
             Console.WriteLine("Введите 1, чтобы использовать стэк на массиве");
-            Console.WriteLine("Введите 2, чтобы использовать стэк на списке");
+            Console.WriteLine("Введите любое другое число, чтобы использовать стэк на списке");
             int choose = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Введите выражение");
             string toCount = Console.ReadLine();
