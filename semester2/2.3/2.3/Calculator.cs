@@ -4,6 +4,12 @@ namespace Calculator
 {
     public class Calculator
     {
+        /// <summary>
+        /// Counts the expression entered on some stack
+        /// </summary>
+        /// <param name="data">Expression to calculate</param>
+        /// <param name="myStack">Stack, you want to use</param>
+        /// <returns>The answer to your expression</returns>
         public int Count(string data, IStack myStack)
         {
             string[] dataArray = data.Split(' ');
