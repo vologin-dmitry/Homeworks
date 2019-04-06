@@ -12,18 +12,27 @@ namespace Calculator
             Console.WriteLine("Введите выражение");
             string toCount = Console.ReadLine();
             var calculator = new Calculator();
+            IStack stack;
             if (choose == 1)
             {
-                var stack = new StackOnArray();
-                Console.WriteLine(calculator.Count(toCount, stack));
-                stack.Clear();
+                stack = new StackOnArray();
             }
-            if (choose == 2)
+            else
             {
-                var stack = new StackOnList();
-                Console.WriteLine(calculator.Count(toCount, stack));
-                stack.Clear();
+                stack = new StackOnList();
             }
+            try
+            {
+                Console.WriteLine(calculator.Count(toCount, stack));
+            }
+            catch (Exception ex)
+            {
+                if(ex is DivideByZeroException || ex is ArgumentException)
+                {
+                    Console.WriteLine("Ошибка ! Проверьте введенную строку");
+                }
+            }
+            stack.Clear();
         }
     }
 }
