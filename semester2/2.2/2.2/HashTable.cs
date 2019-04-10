@@ -15,6 +15,7 @@ namespace Table
             InitializeTable(myTable, MAX);
         }
 
+
         private void InitializeTable(List[] table, int size)
         {
             for (int i = 0; i < size; ++i)
