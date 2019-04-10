@@ -2,23 +2,26 @@
 
 namespace Calculator
 {
+    /// <summary>
+    /// The interface implemented by the stacks with Push, Pop, GetSize, IsEmpty and Clear methods.
+    /// </summary>
     public interface IStack
     {
         /// <summary>
         /// Putting the value into stack
         /// </summary>
         /// <param name="data">Value to put in the stack</param>
-        void Push(string data);
+        void Push(int data);
 
         /// <summary>
         /// Returns the last item from the stack.
         /// </summary>
         /// <returns>Last item from the stack</returns>
-        string Pop();
+        int Pop();
 
 
         /// <returns>Size of the stack</returns>
-        int GetSize();
+        int Size { get;}
 
         /// <summary>
         /// Checks if stack is empty

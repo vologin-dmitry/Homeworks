@@ -6,31 +6,20 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите 1, чтобы использовать стэк на массиве");
-            Console.WriteLine("Введите любое другое число, чтобы использовать стэк на списке");
-            int choose = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите 1, чтобы использовать стек на массиве");
+            Console.WriteLine("Введите любое другое число, чтобы использовать стек на списке");
+            int choise = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Введите выражение");
             string toCount = Console.ReadLine();
-            var calculator = new Calculator();
-            IStack stack;
-            if (choose == 1)
-            {
-                stack = new StackOnArray();
-            }
-            else
-            {
-                stack = new StackOnList();
-            }
+            var stack = choise == 1 ? (IStack) new StackOnArray() : (IStack) new StackOnList();
+            var calculator = new Calculator(stack);
             try
             {
-                Console.WriteLine(calculator.Count(toCount, stack));
+                Console.WriteLine(calculator.Count(toCount));
             }
-            catch (Exception ex)
+            catch (Exception ex) when (ex is DivideByZeroException || ex is ArgumentException)
             {
-                if(ex is DivideByZeroException || ex is ArgumentException)
-                {
-                    Console.WriteLine("Ошибка ! Проверьте введенную строку");
-                }
+                Console.WriteLine("Ошибка ! Проверьте введенную строку");
             }
             stack.Clear();
         }

@@ -2,77 +2,86 @@
 
 namespace Calculator
 {
+    /// <summary>
+    /// Class which could calculate your expression with "Count" method. Can work with different stacks, stacks are provided in the constructor
+    /// </summary>
     public class Calculator
     {
+
+        private IStack stack;
+        /// <summary>
+        /// Constructor, which requires stack, calculator will work on
+        /// </summary>
+        /// <param name="stack">Stack, calculator will work on</param>
+        public Calculator(IStack stack)
+        {
+            this.stack = stack;
+        }
+        /// <summary>
+        /// Default constructor, which creates calculator, that works on stack on list
+        /// </summary>
+        public Calculator()
+        {
+            this.stack = new StackOnList();
+        }
+
+
         /// <summary>
         /// Counts the expression entered on some stack
         /// </summary>
         /// <param name="data">Expression to calculate</param>
-        /// <param name="myStack">Stack, you want to use</param>
         /// <returns>The answer to your expression</returns>
-        public int Count(string data, IStack myStack)
+        public int Count(string data)
         {
             string[] dataArray = data.Split(' ');
             foreach (var value in dataArray)
             {
-                if ((!IsDigit(value) && !IsOperator(value)) || ((IsOperator(value) && myStack.GetSize() < 2)))
+                int temp;
+                if ((!int.TryParse(value, out temp) && !IsOperator(value)) || ((IsOperator(value) && stack.Size < 2)))
                 {
                     throw new ArgumentException("Error ! Please check input data");
                 }
                 if (IsOperator(value))
                 {
-                    DoingThings(value, myStack);
+                    DoingThings(value, stack);
                     continue;
                 }
-                if (IsDigit(value))
+                int number;
+                if (int.TryParse(value, out number))
                 {
-                    myStack.Push(value);
+                    stack.Push(number);
                 }
             }
-            if (myStack.GetSize() != 1)
+            if (stack.Size != 1)
             {
                 throw new ArgumentException("Error ! Please check input data");
             }
-            return Convert.ToInt32(myStack.Pop());
+            return stack.Pop();
         }
 
         private static bool IsOperator(string value)
-        {
-            return (value == "+" || value == "-" || value == "*" || value == "/");
-        }
+            => (value == "+" || value == "-" || value == "*" || value == "/");
 
-        private static bool IsDigit(string value)
-        {
-
-            foreach (char letter in value)
-            {
-                if ((letter - '0' > 9 || letter - '0' < 0) && value[0] != '-')
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
 
         private static void DoingThings(string value, IStack myStack)
         {
-            int second = Convert.ToInt32(myStack.Pop());
-            int first = Convert.ToInt32(myStack.Pop());
+            int second = myStack.Pop();
+            int first = myStack.Pop();
             switch (value)
             {
                 case "+":
                     {
-                        myStack.Push(Convert.ToString(first + second));
+                        myStack.Push(first + second);
                         break;
                     }
                 case "-":
                     {
-                        myStack.Push(Convert.ToString(first - second));
+                        myStack.Push(first - second);
                         break;
                     }
                 case "*":
                     {
-                        myStack.Push(Convert.ToString(first * second));
+                        myStack.Push(first * second);
                         break;
                     }
                 case "/":
@@ -81,7 +90,7 @@ namespace Calculator
                         {
                             throw new DivideByZeroException("Error ! Check your input data");
                         }
-                        myStack.Push(Convert.ToString(first / second));
+                        myStack.Push(first / second);
                         break;
                     }
             }

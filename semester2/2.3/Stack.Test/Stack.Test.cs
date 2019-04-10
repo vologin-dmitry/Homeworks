@@ -8,21 +8,14 @@ namespace Stack.Test
     [TestClass]
     public class StackTest
     {
-        StackOnArray arrayStack;
-        StackOnList listStack;
+        private StackOnArray arrayStack;
+        private StackOnList listStack;
 
         [TestInitialize]
         public void Initialize()
         {
             arrayStack = new StackOnArray();
             listStack = new StackOnList();
-        }
-
-        [TestCleanup]
-        public void Cleanup()
-        {
-            arrayStack.Clear();
-            listStack.Clear();
         }
 
         [TestMethod]
@@ -90,12 +83,12 @@ namespace Stack.Test
             => ClearCheck(listStack);
 
         [TestMethod]
-        [ExpectedException(typeof(System.IndexOutOfRangeException))]
+        [ExpectedException(typeof(System.InvalidOperationException))]
         public void PopWhenEmptyTestArray()
             => PopWhenEmpty(arrayStack);
 
         [TestMethod]
-        [ExpectedException(typeof(System.IndexOutOfRangeException))]
+        [ExpectedException(typeof(System.InvalidOperationException))]
         public void PopWhenEmptyTestList()
             => PopWhenEmpty(listStack);
 
@@ -107,45 +100,45 @@ namespace Stack.Test
 
         private void IsEmptyInt(IStack stack)
         {
-            Assert.AreEqual(0, stack.GetSize());
+            Assert.AreEqual(0, stack.Size);
         }
 
         private void OnePush(IStack stack)
         {
-            stack.Push("4");
+            stack.Push(4);
             Assert.AreEqual(false, stack.IsEmpty());
         }
 
         private void OnePushInt(IStack stack)
         {
-            stack.Push("-51");
-            Assert.AreEqual(1, stack.GetSize());
+            stack.Push(-51);
+            Assert.AreEqual(1, stack.Size);
         }
 
         private void PushAndPop(IStack stack)
         {
-            stack.Push("4");
+            stack.Push(4);
             stack.Pop();
             Assert.AreEqual(true, stack.IsEmpty());
         }
 
         private void ValueDoesNotChange(IStack stack)
         {
-            stack.Push("8");
-            Assert.AreEqual("8", stack.Pop());
+            stack.Push(8);
+            Assert.AreEqual(8, stack.Pop());
         }
 
         private void SecondDoesNotChange(IStack stack)
         {
-            stack.Push("3");
-            stack.Push("2");
+            stack.Push(3);
+            stack.Push(2);
             stack.Pop();
-            Assert.AreEqual("3", stack.Pop());
+            Assert.AreEqual(3, stack.Pop());
         }
 
         private void ClearCheck(IStack stack)
         {
-            stack.Push("5");
+            stack.Push(5);
             stack.Clear();
             Assert.AreEqual(true, stack.IsEmpty());
         }

@@ -5,38 +5,43 @@ namespace Calculator
     public class StackOnArray : IStack
     {
         private const int MAX = 100;
-        private string[] stack = new string[MAX];
-        int size = 0;
+        private int[] stack = new int[MAX];
+        public int Size { get; private set; } = 0;
 
-        public void Push(string data)
+        public void Push(int data)
         {
-            stack[size] = data;
-            ++size;
-        }
-
-        public string Pop()
-        {
-            if (size <= 0)
+            if (Size < 99)
             {
-                throw new IndexOutOfRangeException();
+                stack[Size] = data;
+                ++Size;
             }
-            --size;
-            return stack[size];
+            else
+            {
+                Console.WriteLine("Ошибка ! Стек переполнен");
+            }
         }
 
-        public bool IsEmpty() => size == 0;
+        public int Pop()
+        {
+            if (Size <= 0)
+            {
+                throw new InvalidOperationException();
+            }
+            --Size;
+            return stack[Size];
+        }
 
-        public int GetSize() => size;
+        public bool IsEmpty() => Size == 0;
 
         public void Clear()
         {
-            if (size != 0)
+            if (Size != 0)
             {
-                for (int i = 0; i < size; ++i)
+                for (int i = 0; i < Size; ++i)
                 {
-                    stack[i] = null;
+                    stack[i] = 0;
                 }
-                size = 0;
+                Size = 0;
             }
         }
     }

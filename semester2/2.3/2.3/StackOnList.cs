@@ -5,50 +5,44 @@ namespace Calculator
     public class StackOnList : IStack
     {
         private StackElement end = null;
-        private int size = 0;
+        public int Size { get; private set; } = 0;
 
         private class StackElement
         {
-            internal string data = "";
-            internal StackElement previous = null;
+            public int Data { get; set; } = 0;
+            public StackElement Previous { get; set; } = null;
 
-            public StackElement(string data, StackElement previous)
+            public StackElement(int data, StackElement previous)
             {
-                this.data = data;
-                this.previous = previous;
+                this.Data = data;
+                this.Previous = previous;
             }
         }
 
-        public void Push(string data)
+        public void Push(int data)
         {
-            ++size;
-            if (end == null)
-            {
-                end = new StackElement(data, null);
-                return;
-            }
+            ++Size;
             end = new StackElement(data, end);
         }
 
-        public string Pop()
+        public int Pop()
         {
-            if (size <= 0)
+            if (Size <= 0)
             {
-                throw new IndexOutOfRangeException();
+                throw new InvalidOperationException();
             }
-            string toReturn = end.data;
-            end = end.previous;
-            --size;
+            int toReturn = end.Data;
+            end = end.Previous;
+            --Size;
             return toReturn;
         }
 
-        public bool IsEmpty() => size == 0;
+        public bool IsEmpty() => Size == 0;
 
-        public int GetSize() => size;
 
         public void Clear()
         {
-            size = 0;
+            Size = 0;
             end = null;
         }
     }
