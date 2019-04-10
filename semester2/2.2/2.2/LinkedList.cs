@@ -21,37 +21,35 @@ namespace LinkedList
             }
         }
 
-        private Node head = null;
-        private Node tail = null;
-        private int size = 0;
+        private Node head;
+        private Node tail;
+        public int Size { get; private set; }
 
-        public bool IsEmpty() => size == 0;
-
-        public int GetSize() => size;
+        public bool IsEmpty() => Size == 0;
 
         public bool Add(string data, int position)
         {
-            if (position > size + 1 || position < 1)
+            if (position > Size + 1 || position < 1)
             {
                 return false;
             }
-            if (size == 0)
+            if (Size == 0)
             {
-                ++size;
+                ++Size;
                 tail = new Node(data, null);
                 head = new Node(data, null);
                 return true;
             }
-            if (position == size + 1)
+            if (position == Size + 1)
             {
-                ++size;
+                ++Size;
                 tail.Next = new Node(data, null);
                 tail = tail.Next;
                 return true;
             }
             if (position == 1)
             {
-                ++size;
+                ++Size;
                 head = new Node(data, head);
                 return true;
             }
@@ -62,26 +60,26 @@ namespace LinkedList
             }
             var newNode = new Node(data, current.Next);
             current.Next = newNode;
-            ++size;
+            ++Size;
             return true;
         }
 
         public bool Delete(int position)
         {
-            if (position < 1 || position > size)
+            if (position < 1 || position > Size)
             {
                 return false;
             }
-            if (size == 1)
+            if (Size == 1)
             {
                 head = null;
                 tail = null;
-                --size;
+                --Size;
                 return true;
             }
             if (position == 1)
             {
-                --size;
+                --Size;
                 head = head.Next;
                 return true;
             }
@@ -91,7 +89,7 @@ namespace LinkedList
                 current = current.Next;
             }
             current.Next = current.Next.Next;
-            --size;
+            --Size;
             return false;
         }
 
@@ -107,7 +105,7 @@ namespace LinkedList
 
         public bool SetDataOn(string data, int position)
         {
-            if (position > size || position < 0)
+            if (position > Size || position < 0)
             {
                 return false;
             }
@@ -122,7 +120,7 @@ namespace LinkedList
 
         private Node GetNode(int position)
         {
-            if (position < 1 || position > size)
+            if (position < 1 || position > Size)
             {
                 return null;
             }
@@ -137,7 +135,7 @@ namespace LinkedList
         public void Clear()
         {
             head = null;
-            size = 0;
+            Size = 0;
             tail = null;
         }
     }

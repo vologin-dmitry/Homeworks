@@ -7,7 +7,7 @@ namespace Table
     {
         private int MAX = 100;
         private List[] myTable;
-        private int filledCells = 0;
+        private int filledCells;
 
         public HashTable()
         {
@@ -30,10 +30,10 @@ namespace Table
             InitializeTable(temp, MAX);
             foreach (List list in myTable)
             {
-                for (int i = 1; i <= list.GetSize(); ++i)
+                for (int i = 1; i <= list.Size; ++i)
                 {
                     int hash = HashCode(list.GetDataOn(i));
-                    temp[hash].Add(list.GetDataOn(i), temp[hash].GetSize() + 1);
+                    temp[hash].Add(list.GetDataOn(i), temp[hash].Size + 1);
                 }
             }
             myTable = temp;
@@ -49,11 +49,11 @@ namespace Table
                 Resize();
             }
             int hash = HashCode(data);
-            if (myTable[hash].GetSize() == 0)
+            if (myTable[hash].Size == 0)
             {
                 ++filledCells;
             }
-            myTable[hash].Add(data, myTable[hash].GetSize() + 1);
+            myTable[hash].Add(data, myTable[hash].Size + 1);
         }
 
         public bool Delete(string data)
@@ -81,7 +81,7 @@ namespace Table
 
         private int GetPosition(string data, int hash)
         {
-            int size = myTable[hash].GetSize();
+            int size = myTable[hash].Size;
             for (int i = 1; i <= size; ++i)
             {
                 if (myTable[hash].GetDataOn(i) == data)

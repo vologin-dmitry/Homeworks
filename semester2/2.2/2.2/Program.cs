@@ -7,16 +7,16 @@
         static void Main(string[] args)
         {
             var table = new HashTable();
-            string choose = "-1";
-            while (choose != "0")
+            string choise = "-1";
+            while (choise != "0")
             {
                 Console.WriteLine();
                 Console.WriteLine("Введите 1, чтобы добавить значение в таблицу");
                 Console.WriteLine("Введите 2, чтобы удалить значение из таблицы");
                 Console.WriteLine("Введите 3, чтобы проверить принадлежность значения к таблице");
                 Console.WriteLine("Введите 0, чтобы выйти");
-                choose = Console.ReadLine();
-                switch (choose)
+                choise = Console.ReadLine();
+                switch (choise)
                 {
                     case "1":
                         {
