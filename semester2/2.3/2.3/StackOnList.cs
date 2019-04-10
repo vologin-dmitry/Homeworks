@@ -4,13 +4,13 @@ namespace Calculator
 {
     public class StackOnList : IStack
     {
-        private StackElement end = null;
-        public int Size { get; private set; } = 0;
+        private StackElement end;
+        public int Size { get; private set; }
 
         private class StackElement
         {
-            public int Data { get; set; } = 0;
-            public StackElement Previous { get; set; } = null;
+            public int Data { get; set; }
+            public StackElement Previous { get; set; }
 
             public StackElement(int data, StackElement previous)
             {

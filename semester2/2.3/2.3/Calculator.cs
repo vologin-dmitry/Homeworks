@@ -8,7 +8,7 @@ namespace Calculator
     public class Calculator
     {
 
-        private IStack stack;
+        private readonly IStack stack;
         /// <summary>
         /// Constructor, which requires stack, calculator will work on
         /// </summary>
@@ -37,7 +37,7 @@ namespace Calculator
             foreach (var value in dataArray)
             {
                 int temp;
-                if ((!int.TryParse(value, out temp) && !IsOperator(value)) || ((IsOperator(value) && stack.Size < 2)))
+                if (!int.TryParse(value, out temp) && !IsOperator(value) || (IsOperator(value) && stack.Size < 2))
                 {
                     throw new ArgumentException("Error ! Please check input data");
                 }

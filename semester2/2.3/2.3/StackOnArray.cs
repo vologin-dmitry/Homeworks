@@ -6,7 +6,7 @@ namespace Calculator
     {
         private int MAX = 100;
         private int[] stack;
-        public int Size { get; private set; } = 0;
+        public int Size { get; private set; }
 
         public StackOnArray()
         {
