@@ -21,7 +21,7 @@ namespace Calculator
 
 
         /// <returns>Size of the stack</returns>
-        int Size { get;}
+        int Size { get; }
 
         /// <summary>
         /// Checks if stack is empty

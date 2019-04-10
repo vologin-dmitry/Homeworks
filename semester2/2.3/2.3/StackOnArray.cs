@@ -4,21 +4,34 @@ namespace Calculator
 {
     public class StackOnArray : IStack
     {
-        private const int MAX = 100;
-        private int[] stack = new int[MAX];
+        private int MAX = 100;
+        private int[] stack;
         public int Size { get; private set; } = 0;
+
+        public StackOnArray()
+        {
+            stack = new int[MAX];
+        }
 
         public void Push(int data)
         {
-            if (Size < 99)
+            if (Size == MAX)
             {
-                stack[Size] = data;
-                ++Size;
+                Resize();
             }
-            else
+            stack[Size] = data;
+            ++Size;
+        }
+
+        private void Resize()
+        {
+            MAX += 100;
+            int[] temp = new int[MAX];
+            for (int i = 0; i < MAX - 100; ++i)
             {
-                Console.WriteLine("Ошибка ! Стек переполнен");
+                temp[i] = stack[i];
             }
+            stack = temp;
         }
 
         public int Pop()
