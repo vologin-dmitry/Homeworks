@@ -9,7 +9,7 @@ namespace H4T1
     {
         public INode LeftChild { get; set; }
         public INode RightChild { get; set; }
-        private int value;
+        private readonly int value;
 
         /// <summary>
         /// Creates an operand with a given value

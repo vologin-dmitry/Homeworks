@@ -1,4 +1,6 @@
-﻿namespace H4T1
+﻿using System;
+
+namespace H4T1
 {
     class Program
     {
@@ -6,8 +8,8 @@
         {
             Tree tree = new Tree();
             tree.BuildFromfile("test.txt");
-            string line = tree.GetLine();
-            int answer = tree.Count();
+            Console.WriteLine(tree.GetLine());
+            Console.WriteLine(tree.Count());
             tree.Clear();
         }
     }

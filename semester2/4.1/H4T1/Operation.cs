@@ -9,7 +9,7 @@ namespace H4T1
     {
         public INode LeftChild { get; set; }
         public INode RightChild { get; set; }
-        private char data;
+        private readonly char data;
 
         /// <summary>
         /// Creates a node, representing operation of some type
