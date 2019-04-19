@@ -1,14 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace H4T1
 {
     public class Tree
     {
         private INode head;
+
+        /// <summary>
+        /// Constructor, which builds tree
+        /// </summary>
+        /// <param name="input">The expression to convert to a tree</param>
+        public Tree(string input)
+        {
+            Build(input);
+        }
+
+        /// <summary>
+        /// Deafult constructor
+        /// </summary>
+        public Tree() { }
 
         /// <summary>
         /// Counts an expression parsed by a tree
@@ -30,6 +41,23 @@ namespace H4T1
         public void Clear()
         {
             head = null;
+        }
+
+        /// <summary>
+        /// Creates a parse tree for the entered expression from file
+        /// </summary>
+        /// <param name="filePath">Path of the file with string</param>
+        public void BuildFromfile(string filePath)
+        {
+            StreamReader fileReader = new StreamReader(filePath);
+            if (fileReader == null)
+            {
+                throw new FileNotFoundException();
+            }
+            string line = fileReader.ReadLine();
+            fileReader.Close();
+            Build(line);
+
         }
 
         /// <summary>
