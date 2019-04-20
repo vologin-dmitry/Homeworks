@@ -26,7 +26,7 @@ namespace Table
         private void Resize()
         {
             MAX += 100;
-            List[] temp = new List[MAX];
+            var temp = new List[MAX];
             InitializeTable(temp, MAX);
             foreach (List list in myTable)
             {
@@ -73,10 +73,8 @@ namespace Table
 
         public void Clear()
         {
-            for (int i = 0; i < MAX; ++i)
-            {
-                myTable[i] = null;
-            }
+            myTable = new List[MAX];
+            InitializeTable(myTable, MAX);
         }
 
         private int GetPosition(string data, int hash)
