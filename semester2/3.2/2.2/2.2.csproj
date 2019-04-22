@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MultiplicationHashFunction.cs" />
+    <Compile Include="DefaultHashFunction.cs" />
     <Compile Include="HashTable.cs" />
+    <Compile Include="IHash.cs" />
     <Compile Include="LinkedList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,4 +55,4 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-</Project> 
+</Project>

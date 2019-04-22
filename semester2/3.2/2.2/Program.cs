@@ -6,7 +6,11 @@
     {
         static void Main(string[] args)
         {
-            var table = new HashTable();
+            Console.WriteLine("Введите 1, чтобы использовать стандартную хэш функцию");
+            Console.WriteLine("Введите любое другое число, чтобы использовать хэш-фукцию на умножении");
+            string hashChoice = Console.ReadLine();
+            IHash hashFunc = hashChoice == "1" ? (IHash) new DefaultHashFunction() : (IHash) new MultiplicationHashFunction();
+            var table = new HashTable(hashFunc);
             string choice = "-1";
             while (choice != "0")
             {
