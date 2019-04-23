@@ -18,7 +18,7 @@ namespace UniqueList
         {
             if (GetPosition(data) != -1)
             {
-                throw new AddingExistingElementException();
+                throw new AddingExistingElementException("This element is already in the list");
             }
             return base.Add(data, position);
         }
@@ -32,7 +32,7 @@ namespace UniqueList
         {
             if (!base.Delete(position))
             {
-                throw new DeletionOfNotExistingElement();
+                throw new DeletionOfNotExistingElement("You are trying to delete a non-existent element");
             }
             return true;
         }
@@ -48,7 +48,7 @@ namespace UniqueList
             int alreadyExistsOn = GetPosition(data);
             if (alreadyExistsOn != position && alreadyExistsOn != -1)
             {
-                throw new AddingExistingElementException();
+                throw new AddingExistingElementException("This element is already in the list");
             }
             return base.SetDataOn(data, position);
         }
