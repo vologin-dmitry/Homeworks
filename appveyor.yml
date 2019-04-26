@@ -1,7 +1,7 @@
 image: Visual Studio 2017
 
 before_build:
-    - nuget restore semester2/T1T1/T1T1.sln
+    - nuget restore semester2/2.3/2.3.sln
 
 build:
-    project: semester2/T1T1/T1T1.sln
+    project: semester2/2.3/2.3.sln
