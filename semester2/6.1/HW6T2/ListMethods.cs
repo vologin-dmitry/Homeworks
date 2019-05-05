@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HW6T2
+namespace HW6T1
 {
     /// <summary>
     /// Class with Map, filter and fold functions, for work with lists
     /// </summary>
-    class ListMethods
+    public class ListMethods
     {
         /// <summary>
         /// Converts all list elements using the entered function
