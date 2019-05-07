@@ -114,7 +114,7 @@ namespace H6T2
         /// </summary>
         /// <param name="sender">The object that sent the event</param>
         /// <param name="args">Empty parameters</param>
-        public void OnTop(object sender, EventArgs args)
+        public void OnUp(object sender, EventArgs args)
         {
             if (IsFree((map.Coords.Item1 - 1, map.Coords.Item2)))
             {
@@ -129,7 +129,7 @@ namespace H6T2
         /// </summary>
         /// <param name="sender">The object that sent the event</param>
         /// <param name="args">Empty parameters</param>
-        public void OnBottom(object sender, EventArgs args)
+        public void OnDown(object sender, EventArgs args)
         {
             if (IsFree((map.Coords.Item1 + 1, map.Coords.Item2)))
             {

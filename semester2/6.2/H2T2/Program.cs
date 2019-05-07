@@ -1,19 +1,16 @@
-﻿using System.Collections.Generic;
-
-namespace H6T2
+﻿namespace H6T2
 {
     class Program
     {
         static void Main(string[] args)
         {
             var eventLoop = new EventLoop();
-            var map = new List<char[]>();
-            var game = new Game(FileReader.MakeList("map.txt"));
+            var game = new Game(FileReader.MakeList("Map.txt"));
             game.Draw(game, null);
             eventLoop.LeftHandler += game.OnLeft;
             eventLoop.RightHandler += game.OnRight;
-            eventLoop.TopHandler += game.OnTop;
-            eventLoop.BottomHandler += game.OnBottom;
+            eventLoop.TopHandler += game.OnUp;
+            eventLoop.BottomHandler += game.OnDown;
             eventLoop.LeftHandler += game.Draw;
             eventLoop.RightHandler += game.Draw;
             eventLoop.TopHandler += game.Draw;
