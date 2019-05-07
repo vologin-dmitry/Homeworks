@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace H2T2
+namespace H6T2
 {
+    /// <summary>
+    /// Supports game work
+    /// </summary>
     public class EventLoop
     {
         public event EventHandler<EventArgs> LeftHandler = (sender, args) => { };
@@ -13,6 +12,10 @@ namespace H2T2
         public event EventHandler<EventArgs> TopHandler = (sender, args) => { };
         public event EventHandler<EventArgs> BottomHandler = (sender, args) => { };
         public event EventHandler<EventArgs> ExitHandler = (sender, args) => { };
+
+        /// <summary>
+        /// Reads actions and allows the game to respond to them
+        /// </summary>
         public void Run()
         {
             while (true)

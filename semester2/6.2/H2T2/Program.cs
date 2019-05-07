@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace H2T2
+namespace H6T2
 {
     class Program
     {
@@ -12,13 +8,7 @@ namespace H2T2
         {
             var eventLoop = new EventLoop();
             var map = new List<char[]>();
-            var fir = new char[] { '#', '#', '#', '#', '#' };
-            var sec = new char[] { '#', ' ', '#', ' ', '#' };
-            var thi = new char[] { '#', ' ', '#', ' ', '#' };
-            var forth = new char[] { '#', ' ', ' ', ' ', '#' };
-            var fif = new char[] { '#', '#', '#', '#', '#' };
-            map.Add(fir); map.Add(sec); map.Add(thi); map.Add(forth); map.Add(fif);
-            var game = new Game(map);
+            var game = new Game(FileReader.MakeList("map.txt"));
             game.Draw(game, null);
             eventLoop.LeftHandler += game.OnLeft;
             eventLoop.RightHandler += game.OnRight;
