@@ -7,8 +7,8 @@ namespace ListMethodsTest
     [TestClass]
     public class MapTest
     {
-        List<int> list;
-        int[] check;
+        private List<int> list;
+        private int[] check;
 
         [TestInitialize]
         public void Initialize()
@@ -32,7 +32,7 @@ namespace ListMethodsTest
         [TestMethod]
         public void MultToZeroTest()
         {
-            var check = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+            check = new int[] { 0, 0, 0, 0, 0, 0, 0 };
             list = ListMethods.Map(list, x => x * 0);
             AssertAll(list, check);
         }
@@ -40,7 +40,7 @@ namespace ListMethodsTest
         [TestMethod]
         public void MulitToNegativeTest()
         {
-            var check = new int[] { 1, 0, -5, -13451, -23, 43252, -555 };
+            check = new int[] { 1, 0, -5, -13451, -23, 43252, -555 };
             list = ListMethods.Map(list, x => x *= -1);
             AssertAll(list, check);
         }
@@ -48,7 +48,7 @@ namespace ListMethodsTest
         [TestMethod]
         public void AdditionZeroTest()
         {
-            var check = new int[] { -1, 0, 5, 13451, 23, -43252, 555 };
+            check = new int[] { -1, 0, 5, 13451, 23, -43252, 555 };
             list = ListMethods.Map(list, x => x + 0);
             AssertAll(list, check);
         }
@@ -56,7 +56,7 @@ namespace ListMethodsTest
         [TestMethod]
         public void SubtractionOneTest()
         {
-            var check = new int[] { -2, -1, 4, 13450, 22, -43253, 554 };
+            check = new int[] { -2, -1, 4, 13450, 22, -43253, 554 };
             list = ListMethods.Map(list, x => x - 1);
             AssertAll(list, check);
         }
@@ -64,7 +64,7 @@ namespace ListMethodsTest
         [TestMethod]
         public void TwoOperationsTest()
         {
-            var check = new int[] { -1, 0, 5, 13451, 23, -43252, 555 };
+            check = new int[] { -1, 0, 5, 13451, 23, -43252, 555 };
             list = ListMethods.Map(list, x => x * 2);
             list = ListMethods.Map(list, x => x / 2);
             AssertAll(list, check);
@@ -73,7 +73,7 @@ namespace ListMethodsTest
         [TestMethod]
         public void ThreeOperationsTest()
         {
-            var check = new int[] { 0, 0, 0, 0, 0, -0, 0 };
+            check = new int[] { 0, 0, 0, 0, 0, -0, 0 };
             list = ListMethods.Map(list, x => x * 2);
             list = ListMethods.Map(list, x => x / 2);
             list = ListMethods.Map(list, x => x * 0);
