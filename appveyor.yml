@@ -1,0 +1,6 @@
+image: Visual Studio 2017
+
+before_build:
+    - nuget restore semester2/7.2/H7T2.sln
+build:
+    project: semester2/7.2/H7T2.sln
