@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test2_Try2
+namespace BubbleSortTest
 {
-    class IntComparerTest : IComparer<int>
+    public class IntComparerTest : IComparer<int>
     {
         public int Compare(int first, int second)
         {

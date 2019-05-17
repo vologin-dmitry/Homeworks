@@ -50,10 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BubbleSortTest.cs" />
-    <Compile Include="CharComparerTest.cs" />
     <Compile Include="IntComparerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringCompareTest.cs" />
+    <Compile Include="StringComparerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

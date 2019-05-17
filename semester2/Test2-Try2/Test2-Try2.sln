@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test2-Try2", "Test2-Try2\Test2-Try2.csproj", "{8F1D18D8-1B80-4671-9090-0EB3D1E7D57A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{DF26AB86-7BB0-4A3E-9939-D2DE128D381E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BubbleSortTest", "Test\BubbleSortTest.csproj", "{DF26AB86-7BB0-4A3E-9939-D2DE128D381E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

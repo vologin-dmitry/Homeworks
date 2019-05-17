@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using Test2_Try2;
 
-namespace Test
+namespace BubbleSortTest
 {
     [TestClass]
     public class BubbleSortTest
@@ -44,14 +44,20 @@ namespace Test
         }
 
         [TestMethod]
-        public void EqualIntSort()
+        public void SortStringTest()
         {
-            var list = new List<int> { -5, -5, -5, -5, -5, -5, -5, -5, -5, -5, -5 };
-            BubbleSort<int>.Sort(list, new IntComparerTest());
-            for (int i = 0; i < 11; ++i)
+            var list = new List<string> { "hey you man", "you", "hello", "olololo" };
+            var answers = new string[] { "hey you man", "olololo", "hello", "you" };
+            BubbleSort<string>.Sort(list, new StringComparerTest());
+            for (int i = 0; i < 4; ++i)
             {
-                Assert.AreEqual(-5, list[i]);
+                Assert.AreEqual(answers[i], list[i]);
             }
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void OneObjectNullTest()
+            => BubbleSort<int>.Sort(null, new IntComparerTest());
     }
 }
