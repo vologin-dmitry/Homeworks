@@ -8,11 +8,6 @@ namespace BubbleSortTest
     [TestClass]
     public class BubbleSortTest
     {
-        [TestInitialize]
-        public void Initialize()
-        {
-
-        }
         [TestMethod]
         public void RightSizeIntTest()
         {
