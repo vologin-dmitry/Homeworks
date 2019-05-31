@@ -4,4 +4,4 @@ before_build:
     - nuget restore semester2/Archiver/Archiver.sln
 
 build:
-project: semester2/Archiver/Archiver.sln
+    project: semester2/Archiver/Archiver.sln
