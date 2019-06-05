@@ -1,5 +1,8 @@
 ﻿namespace Table
 {
+    /// <summary>
+    /// Interface of hash functions for strings
+    /// </summary>
     public interface IHash
     {
         /// <summary>

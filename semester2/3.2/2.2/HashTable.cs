@@ -58,7 +58,7 @@ namespace Table
         }
 
         private int HashCode(string data, IHash hashFunction)
-            => hashFunction.HashCode(data) % MAX;
+            => Math.Abs(hashFunction.HashCode(data) % MAX);
 
         /// <summary>
         /// Adds an element to a hash table

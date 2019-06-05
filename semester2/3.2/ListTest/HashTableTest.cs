@@ -1,79 +1,78 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Table
 {
     [TestClass]
-    public class UnitTest1
+    public class HashTableTest
     {
-        DefaultHashFunction VSHash = new DefaultHashFunction();
-        MultiplicationHashFunction MultHash = new MultiplicationHashFunction();
-        HashTable VSTable;
-        HashTable MultTable;
+        private DefaultHashFunction vislualStudioHash = new DefaultHashFunction();
+        private MultiplicationHashFunction multHash = new MultiplicationHashFunction();
+        private HashTable visualStudioTable;
+        private HashTable multTable;
 
 
         [TestInitialize]
         public void Initialize()
         {
-            VSTable = new HashTable(VSHash);
-            MultTable = new HashTable(MultHash);
+            visualStudioTable = new HashTable(vislualStudioHash);
+            multTable = new HashTable(multHash);
         }
 
         [TestMethod]
         public void WordExistsDefaultTest()
-            => Assert.IsTrue(WordExists(VSTable));
+            => Assert.IsTrue(WordExists(visualStudioTable));
 
         [TestMethod]
         public void WordExistsMultTest()
-            => Assert.IsTrue(WordExists(MultTable));
+            => Assert.IsTrue(WordExists(multTable));
 
         [TestMethod]
         public void WordDoesNotExistsDefaultTest()
-            => Assert.IsFalse(WordDoesNotExists(VSTable));
+            => Assert.IsFalse(WordDoesNotExists(visualStudioTable));
 
         [TestMethod]
         public void WordDoesNotExistsMultTest()
-            => Assert.IsFalse(WordDoesNotExists(MultTable));
+            => Assert.IsFalse(WordDoesNotExists(multTable));
 
         [TestMethod]
         public void NotEmptyDoesNotExistsDefaultTest()
-            => Assert.IsFalse(NotEmptyDoesNotExists(VSTable));
+            => Assert.IsFalse(NotEmptyDoesNotExists(visualStudioTable));
 
         [TestMethod]
         public void NotEmptyDoesNotExistsMultTest()
-            => Assert.IsFalse(NotEmptyDoesNotExists(MultTable));
+            => Assert.IsFalse(NotEmptyDoesNotExists(multTable));
 
         [TestMethod]
         public void AfterDeletionExistsDefaultTest()
-            => Assert.IsFalse(AfterDeletionExists(VSTable));
+            => Assert.IsFalse(AfterDeletionExists(visualStudioTable));
 
         [TestMethod]
         public void AfterDeletionExistsMultTest()
-            => Assert.IsFalse(AfterDeletionExists(MultTable));
+            => Assert.IsFalse(AfterDeletionExists(multTable));
 
         [TestMethod]
         public void AllExistsDefaultTest()
-            => Assert.IsTrue(AllExists(VSTable));
+            => Assert.IsTrue(AllExists(visualStudioTable));
 
         [TestMethod]
         public void AllExistsmultTest()
-            => Assert.IsTrue(AllExists(MultTable));
+            => Assert.IsTrue(AllExists(multTable));
 
         [TestMethod]
         public void AfterClearingExistsDefaultTest()
-            => Assert.IsFalse(AfterClearingExists(VSTable));
+            => Assert.IsFalse(AfterClearingExists(visualStudioTable));
 
         [TestMethod]
         public void AfterClearingExistsMultTest()
-            => Assert.IsFalse(AfterClearingExists(MultTable));
+            => Assert.IsFalse(AfterClearingExists(multTable));
 
         [TestMethod]
         public void DeletionNotAllDefaultTest()
-            => Assert.IsTrue(DeletionNotAll(VSTable));
+            => Assert.IsTrue(DeletionNotAll(visualStudioTable));
 
         [TestMethod]
         public void DeletionNotAllMultTest()
-            => Assert.IsTrue(DeletionNotAll(MultTable));
+            => Assert.IsTrue(DeletionNotAll(multTable));
 
 
         private bool WordExists(HashTable table)
