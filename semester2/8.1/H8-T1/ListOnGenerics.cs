@@ -180,7 +180,6 @@ namespace H8_T1
             }
             current.Next = current.Next.Next;
             --Count;
-            return;
         }
 
         /// <summary>
@@ -304,6 +303,7 @@ namespace H8_T1
             /// </summary>
             public void Dispose()
             {
+                // This is not necessary
             }
 
             /// <summary>
