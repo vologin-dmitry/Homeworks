@@ -22,7 +22,7 @@ namespace H8_T1.Test
         {
             var list = new ListOnGenerics<int>();
             list.Add(32);
-            Assert.AreEqual(1, list.Size);
+            Assert.AreEqual(1, list.Count);
         }
 
         [TestMethod]
@@ -31,7 +31,7 @@ namespace H8_T1.Test
             var list = new ListOnGenerics<int>();
             list.Add(32);
             list.Add(0);
-            Assert.AreEqual(2, list.Size);
+            Assert.AreEqual(2, list.Count);
         }
 
         [TestMethod]
@@ -114,7 +114,7 @@ namespace H8_T1.Test
             var list = new ListOnGenerics<int>();
             list.Add(32);
             list.RemoveAt(0);
-            Assert.AreEqual(0, list.Size);
+            Assert.AreEqual(0, list.Count);
         }
 
         [TestMethod]
@@ -126,7 +126,7 @@ namespace H8_T1.Test
             list.Insert(1, 5);
             list.RemoveAt(1);
             Assert.AreEqual(48, list[1]);
-            Assert.AreEqual(2, list.Size);
+            Assert.AreEqual(2, list.Count);
         }
 
         [TestMethod]
@@ -136,7 +136,7 @@ namespace H8_T1.Test
             list.Add("e");
             list.Add("q");
             list.Clear();
-            Assert.AreEqual(0, list.Size);
+            Assert.AreEqual(0, list.Count);
         }
 
         [TestMethod]
