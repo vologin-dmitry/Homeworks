@@ -30,9 +30,9 @@ namespace HW6T1
         /// <param name="list">Your list</param>
         /// <param name="func">The function, that filters your list</param>
         /// <returns>List with only elements, which satisfies your function</returns>
-        public static List<int> Filter(List<int> list, Func<int, bool> func)
+        public static List<T> Filter<T>(List<T> list, Func<T, bool> func)
         {
-            var newList = new List<int>();
+            var newList = new List<T>();
             foreach (var element in list)
             {
                 if (func(element))
