@@ -14,9 +14,9 @@ namespace HW6T1
         /// <param name="list">Your list</param>
         /// <param name="func">The function you want to use for each item in the list</param>
         /// <returns>Changed list</returns>
-        public static List<int> Map(List<int> list, Func<int, int> func)
+        public static List<U> Map<T, U>(List<T> list, Func<T, U> func)
         {
-            var newList = new List<int>();
+            var newList = new List<U>();
             foreach (var element in list)
             {
                 newList.Add(func(element));
@@ -50,7 +50,7 @@ namespace HW6T1
         /// <param name="func">Function, which accumulates your list elements by some rule</param>
         /// <param name="storage">Initial value for the accumulation function</param>
         /// <returns>Accumulated value from all list elements</returns>
-        public static int Fold (List<int> list, Func<int, int, int> func, int storage)
+        public static U Fold<T, U> (List<T> list, Func<U, T, U> func, U storage)
         {
             foreach (var element in list)
             {
