@@ -5,4 +5,3 @@ before_build:
 
 build:
     project: semester2/3.2/2.2.sln
-
