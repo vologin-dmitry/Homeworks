@@ -4,4 +4,4 @@ before_build:
     - nuget restore semester2/6.1/HW6T2.sln
 
 build:
-    project: semester2/6.1/HW6T2.sln
+    project: semester2/2.3/2.3.sln
