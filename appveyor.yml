@@ -5,4 +5,3 @@ before_build:
 
 build:
     project: semester2/6.1/HW6T2.sln
-    
