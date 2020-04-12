@@ -1,7 +1,7 @@
-image: Visual Studio 2017
+image: Visual Studio 2019
 
 before_build:
-    - nuget restore semester2/6.1/HW6T2.sln
+    - nuget restore semester4/HomeworkOne/HomeworkOne.sln
 
 build:
-    project: semester2/2.3/2.3.sln
+    project: semester4/HomeworkOne/HomeworkOne.sln
