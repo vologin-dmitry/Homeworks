@@ -4,4 +4,4 @@ before_build:
     - nuget restore semester4/ThirdTime/ThirdTime.sln
 
 build:
-    project: semester2/ThirdTime/ThirdTime.sln
+    project: semester4/ThirdTime/ThirdTime.sln
