@@ -3,7 +3,7 @@
 let fibonacci number =
     let rec fibonacciHelper previous current i =
         if number < 0 then
-            None
+            invalidArg ("number") ("Negative numbers are not supported!")
         else if number = 0 then
             Some(0)
         else if number = i then

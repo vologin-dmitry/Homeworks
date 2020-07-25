@@ -1,19 +1,20 @@
 ﻿module Factorial.Tests
 
+open System
+open FsUnit
 open NUnit.Framework
 open Factorial
 
-(*[<Test>]
-let factorialNegativestTest () =
-    Assert.Throws<System.NullReferenceException>(factorial -100)
-    Assert.AreEqual(factorial -100, None)
-    Assert.AreEqual(factorial -1, None)
-    Assert.AreEqual(factorial -1024124, None)*)
-
 [<Test>]
-let factorialPositivesAndZeroTest () =
-    Assert.AreEqual(6, factorial 3)
-    Assert.AreEqual(1, factorial 0)
-    Assert.AreEqual(1, factorial 1)
-    Assert.AreEqual(120, factorial 5)
-    Assert.AreEqual(3628800, factorial 10)
+let ``factorial of negative numbers``() =
+    (fun() -> factorial -1 |> ignore) |> should throw typeof<ArgumentException>
+    (fun() -> factorial -10 |> ignore) |> should throw typeof<ArgumentException>
+    (fun() -> factorial -1242141 |> ignore) |> should throw typeof<ArgumentException>
+    
+[<Test>]
+let ``factorial of positive numbers and zero`` () =
+    factorial 3 |> should equal 6
+    factorial 0 |> should equal 1
+    factorial 1 |> should equal 1
+    factorial 5 |> should equal 120
+    factorial 10 |> should equal 3628800

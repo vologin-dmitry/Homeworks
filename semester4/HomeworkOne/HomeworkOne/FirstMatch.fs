@@ -7,5 +7,5 @@ let firstMatch list toFind =
         else if List.head list = toFind then
             Some(position)
         else
-            firstMatchHelper(List.tail list)(position + 1)
+            firstMatchHelper (List.tail list) (position + 1)
     firstMatchHelper list 0
