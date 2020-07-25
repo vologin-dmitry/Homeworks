@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="ReverseList.fs" />
+    <Compile Include="Factorial.fs" />
+    <Compile Include="Fibonacci.fs" />
+    <Compile Include="FirstMatch.fs" />
+    <Compile Include="ListOfPows.fs" />
+  </ItemGroup>
+
+</Project>
