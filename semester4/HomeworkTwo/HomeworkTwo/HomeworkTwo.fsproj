@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Count.fs" />
+        <Compile Include="TreeMap.fs" />
+        <Compile Include="ParseTree.fs" />
+        <Compile Include="InfinitePrimeNumbers.fs" />
+    </ItemGroup>
+
+</Project>

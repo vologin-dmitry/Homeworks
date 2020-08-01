@@ -1,7 +1,17 @@
+
 image: Visual Studio 2019
 
-before_build:
-    - nuget restore semester4/HomeworkOne/HomeworkOne.sln
+environment:
+  matrix:
+  - solution_path: sem4\HomeworkOne\HomeworkOne.sln
+  - solution_path: sem4\HomeworkTwo\HomeworkTwo.sln
 
-build:
-    project: semester4/HomeworkOne/HomeworkOne.sln
+before_build:
+  - nuget restore %solution_path%
+
+build_script:
+  - msbuild %solution_path%
+
+test_script:
+  - dotnet test sem4\HomeworkOne\HomeworkOne.sln
+  - dotnet test sem4\HomeworkTwo\HomeworkTwo.sln
