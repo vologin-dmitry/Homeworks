@@ -5,6 +5,7 @@ environment:
   matrix:
   - solution_path: semester4\HomeworkOne\HomeworkOne.sln
   - solution_path: semester4\HomeworkTwo\HomeworkTwo.sln
+  - solution_path: semester4\BracketsChecker\BracketsChecker.sln
 
 before_build:
   - nuget restore %solution_path%
@@ -13,5 +14,4 @@ build_script:
   - msbuild %solution_path%
 
 test_script:
-  - dotnet test semester4\HomeworkOne\HomeworkOne.sln
-  - dotnet test semester4\HomeworkTwo\HomeworkTwo.sln
+  - dotnet test %solution_path%

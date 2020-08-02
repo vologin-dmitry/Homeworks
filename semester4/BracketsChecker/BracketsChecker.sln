@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BracketsChecker", "BracketsChecker\BracketsChecker.fsproj", "{8751A404-2E55-4DBA-AC3E-6C90466F861F}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BracketsCheckTests", "BracketsCheckTests\BracketsCheckTests.fsproj", "{779136A1-1CC6-402A-A881-99A8E4337227}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8751A404-2E55-4DBA-AC3E-6C90466F861F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8751A404-2E55-4DBA-AC3E-6C90466F861F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8751A404-2E55-4DBA-AC3E-6C90466F861F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8751A404-2E55-4DBA-AC3E-6C90466F861F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{779136A1-1CC6-402A-A881-99A8E4337227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{779136A1-1CC6-402A-A881-99A8E4337227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{779136A1-1CC6-402A-A881-99A8E4337227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{779136A1-1CC6-402A-A881-99A8E4337227}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
