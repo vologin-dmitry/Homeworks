@@ -11,4 +11,4 @@ build_script:
   - msbuild %solution%
 
 test_script:
-  - dotnet test %solution%
+  - dotnet test emester4/HomeworkTwo/HomeworkTwo.fsproj
