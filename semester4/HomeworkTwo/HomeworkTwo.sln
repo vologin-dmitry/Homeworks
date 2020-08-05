@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HomeworkTwo", "HomeworkTwo\HomeworkTwo.fsproj", "{C199937F-B593-4295-89AE-B0E7551F9554}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "HomeworkTwo.Tests", "HomeworkTwo.Tests\HomeworkTwo.Tests.fsproj", "{D6ED270F-F24D-4B91-AF6D-41E9F88E9BA0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C199937F-B593-4295-89AE-B0E7551F9554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C199937F-B593-4295-89AE-B0E7551F9554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C199937F-B593-4295-89AE-B0E7551F9554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C199937F-B593-4295-89AE-B0E7551F9554}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6ED270F-F24D-4B91-AF6D-41E9F88E9BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6ED270F-F24D-4B91-AF6D-41E9F88E9BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6ED270F-F24D-4B91-AF6D-41E9F88E9BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6ED270F-F24D-4B91-AF6D-41E9F88E9BA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
