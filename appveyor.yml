@@ -1,17 +1,8 @@
-image: Visual Studio 2019
 
-init:
-  - git config --global core.autocrlf true
-
-environment:
-  matrix:
-  - solution: semester4/HomeworkTwo/HomeworkTwo.sln
+image: Visual Studio 2017
 
 before_build:
-  - nuget restore %solution%
+    - nuget restore semester4/HomeworkTwo/HomeworkTwo.sln
 
 build:
-  project: $(solution)
-
-test_script:
-  - dotnet test %solution%
+    project: semester4/HomeworkTwo/HomeworkTwo.sln
