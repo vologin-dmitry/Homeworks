@@ -8,7 +8,7 @@ before_build:
   - nuget restore %solution%
 
 build_script:
-  - msbuild %solution_path%
+  - msbuild %solution%
 
 test_script:
   - dotnet test %solution%
