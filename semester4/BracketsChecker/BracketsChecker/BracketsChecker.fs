@@ -2,13 +2,16 @@
 
 open System
 
+/// Сhecks that the parentheses are correctly placed in the expression
 let bracketsChecker (str : String) =
     let isNotBracket (ch : Char) =
         ch <> '[' && ch <> '{' && ch <> '(' && ch <> ']' && ch <> '}' && ch <> ')'
 
+    /// Checks if symbol is a opening bracket
     let isOpenBracket (bracket : Char) =
         bracket = '[' || bracket = '{' || bracket = '('
 
+    /// Checks if symbols are opening and closing brackets of the same type
     let isMatchingBrackets (first : Char) (second : Char) =
         match first with
         | '(' -> second = ')'
@@ -16,6 +19,7 @@ let bracketsChecker (str : String) =
         | '{' -> second = '}'
         | _ -> true
 
+    /// Checks if brackets in line are correct
     let rec checkLine (str : List<Char>) (memory : List<Char>) =
         if str = []
             then memory = []
