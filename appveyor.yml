@@ -1,7 +1,17 @@
-image: Visual Studio 2017
+image: Visual Studio 2019
+
+init:
+  - git config --global core.autocrlf true
+
+environment:
+  matrix:
+  - solution: Semester4/PointFree/PointFree.sln
 
 before_build:
-    - nuget restore semester2/6.1/HW6T2.sln
+  - nuget restore %solution%
 
 build:
-    project: semester2/2.3/2.3.sln
+  project: $(solution)
+
+test_script:
+  - dotnet test %solution%
