@@ -24,7 +24,6 @@ let main argv =
             else
                 Seq.iter (fun x -> x |> snd |> printfn "Number is: %A") answer
                 menu seq
-
         | "4" ->
             printfn "Please enter phone to search"
             let number = Console.ReadLine ()

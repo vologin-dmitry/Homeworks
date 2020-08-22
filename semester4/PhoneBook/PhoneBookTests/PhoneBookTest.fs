@@ -63,4 +63,9 @@ let ``read from file to empty sequence test`` () =
     let data = PhoneBook.ReadFromFile "TestFile.txt" Seq.empty
     Seq.contains ("Ivan", "111-222-333") data |> should equal true
     Seq.contains ("Ivanov", "123-456-222") data |> should equal true
-    Seq.contains ("Daade", "444-543-132") data |> should equal true
+
+[<Test>]
+let ``read from file to sequence test`` () =
+    let data = Seq.empty |> PhoneBook.Add "Badnames" "132-132-132"|> PhoneBook.ReadFromFile "TestFile.txt" 
+    Seq.contains ("Ivan", "111-222-333") data |> should equal true
+    Seq.contains ("Badnames", "132-132-132") data |> should equal true

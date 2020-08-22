@@ -5,6 +5,7 @@
 
         <IsPackable>false</IsPackable>
         <GenerateProgramFile>false</GenerateProgramFile>
+        <RootNamespace>TestProject1</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,7 +19,6 @@
     <ItemGroup>
         <Compile Include="PhoneBookTest.fs" />
         <Compile Include="Program.fs" />
-        <Content Include="TestFile.txt" />
     </ItemGroup>
 
     <ItemGroup>

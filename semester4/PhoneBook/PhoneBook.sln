@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PhoneBook", "PhoneBook\PhoneBook.fsproj", "{79F13619-3F30-4C58-ADA5-3ED232855DE0}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestProject1", "TestProject1\TestProject1.fsproj", "{83419304-CBAE-4658-8FB7-85AC0545BC76}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "PhoneBookTests", "PhoneBookTests\PhoneBookTests.fsproj", "{83419304-CBAE-4658-8FB7-85AC0545BC76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
