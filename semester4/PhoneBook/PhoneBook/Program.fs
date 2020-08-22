@@ -13,6 +13,7 @@ let main argv =
             let name = Console.ReadLine ()
             printfn "Please enter phone"
             let number = Console.ReadLine ()
+            printfn "Done!"
             menu (PhoneBook.Add name number seq)
         | "3" ->
             printfn "Please enter name to search"
@@ -42,12 +43,15 @@ let main argv =
             printfn "Please enter file path"
             let path = Console.ReadLine ()
             PhoneBook.WriteToFile path seq
+            printfn "Done!"
             menu seq
         | "7" ->
             printfn "Please enter file path"
             let path = Console.ReadLine ()
             try
-                PhoneBook.ReadFromFile path seq |> menu
+                let answer = PhoneBook.ReadFromFile path seq
+                printfn "Done!"
+                answer |> menu
             with
             | :? FileNotFoundException ->
                 printfn "File not found!"
