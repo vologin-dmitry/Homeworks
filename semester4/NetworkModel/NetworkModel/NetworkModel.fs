@@ -24,7 +24,5 @@ type Network(computers: List<Computer>, netMap: List<List<bool>>) =
     member this.Start (amountOfSteps: int) (frequencyOfPrinting: int) =
         for i in 1 .. amountOfSteps do
             this.OneStep
-            if (frequencyOfPrinting = 0
-                |> not
-                && i % frequencyOfPrinting = 0) then
+            if (frequencyOfPrinting = 0 |> not && i % frequencyOfPrinting = 0) then
                 List.iter (fun (x: Computer) -> x.PrintInfo) computers
