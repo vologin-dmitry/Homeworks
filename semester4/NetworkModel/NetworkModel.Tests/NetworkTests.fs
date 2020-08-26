@@ -128,3 +128,12 @@ let ``tree test second step`` () =
     net.Start 2 0
     computers.[3].Infected |> should equal false
     computers.[4].Infected |> should equal false
+
+
+//map1:   *first*        map2:   *first*        map3    *first*
+//          |                      |                    /      \
+//       second                  second              second   third
+//         |                       |                   |        |
+//       third                   third              fourth   fifth 
+
+// *first* - infected computer
