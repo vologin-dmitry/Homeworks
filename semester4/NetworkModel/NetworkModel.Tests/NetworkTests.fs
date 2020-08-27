@@ -25,11 +25,11 @@ let map3 =
 [<Test>]
 let ``simple infect line test one step`` () =
     let computers =
-        [ Computer("First", "Windows")
-          Computer("Second", "Windows")
-          Computer("Third", "Windows") ]
+        [ Computer("First", Windows)
+          Computer("Second", Windows)
+          Computer("Third", Windows) ]
 
-    computers.[0].Infected <- true
+    computers.[0].Infect()
     let net = Network(computers, map1)
     net.Start 1 0
     computers.[0].Infected |> should equal true
@@ -42,11 +42,11 @@ let ``simple infect line test one step`` () =
 [<Test>]
 let ``simple infect line test two steps`` () =
     let computers =
-        [ Computer("First", "Windows")
-          Computer("Second", "Windows")
-          Computer("Third", "Windows") ]
+        [ Computer("First", Windows)
+          Computer("Second", Windows)
+          Computer("Third", Windows) ]
 
-    computers.[0].Infected <- true
+    computers.[0].Infect()
     let net = Network(computers, map1)
     net.Start 2 0
     computers.[0].Infected |> should equal true
@@ -59,11 +59,11 @@ let ``simple infect line test two steps`` () =
 [<Test>]
 let ``simple infect line test three steps`` () =
     let computers =
-        [ Computer("First", "Windows")
-          Computer("Second", "Windows")
-          Computer("Third", "Windows") ]
+        [ Computer("First", Windows)
+          Computer("Second", Windows)
+          Computer("Third", Windows) ]
 
-    computers.[0].Infected <- true
+    computers.[0].Infect()
     let net = Network(computers, map1)
     net.Start 3 0
     computers.[0].Infected |> should equal true
@@ -76,11 +76,11 @@ let ``simple infect line test three steps`` () =
 [<Test>]
 let ``computers wit zero percent infection are not infected`` () =
     let computers =
-        [ Computer("First", "General OS")
-          Computer("Second", "BolgenOS")
-          Computer("Third", "EncryptedThing") ]
+        [ Computer("First", Linux)
+          Computer("Second", Linux)
+          Computer("Third", Linux) ]
 
-    computers.[0].Infected <- true
+    computers.[0].Infect()
     let net = Network(computers, map1)
     net.Start 10 0
     computers.[1].Infected |> should equal false
@@ -89,11 +89,11 @@ let ``computers wit zero percent infection are not infected`` () =
 [<Test>]
 let ``separated computer should not be infected`` () =
     let computers =
-        [ Computer("First", "Windows")
-          Computer("Second", "Windows")
-          Computer("Third", "Windows") ]
+        [ Computer("First", Windows)
+          Computer("Second", Windows)
+          Computer("Third", Windows) ]
 
-    computers.[0].Infected <- true
+    computers.[0].Infect()
     let net = Network(computers, map2)
     net.Start 3 0
     computers.[2].Infected |> should equal false
@@ -102,13 +102,13 @@ let ``separated computer should not be infected`` () =
 [<Test>]
 let ``tree test one step`` () =
     let computers =
-        [ Computer("First", "Windows")
-          Computer("Second", "Windows")
-          Computer("Third", "Windows")
-          Computer("Fourth", "DomestOS")
-          Computer("Fifth", "Igotnoideas") ]
+        [ Computer("First", Windows)
+          Computer("Second", Windows)
+          Computer("Third", Windows)
+          Computer("Fourth", Linux)
+          Computer("Fifth", Linux) ]
 
-    computers.[0].Infected <- true
+    computers.[0].Infect()
     let net = Network(computers, map3)
     net.Start 1 0
     computers.[1].Infected |> should equal true
@@ -117,13 +117,13 @@ let ``tree test one step`` () =
 [<Test>]
 let ``tree test second step`` () =
     let computers =
-        [ Computer("First", "Windows")
-          Computer("Second", "Windows")
-          Computer("Third", "Windows")
-          Computer("Fourth", "DomestOS")
-          Computer("Fifth", "Igotnoideas") ]
+        [ Computer("First", Windows)
+          Computer("Second", Windows)
+          Computer("Third", Windows)
+          Computer("Fourth", Linux)
+          Computer("Fifth", Linux) ]
 
-    computers.[0].Infected <- true
+    computers.[0].Infect()
     let net = Network(computers, map3)
     net.Start 2 0
     computers.[3].Infected |> should equal false
@@ -133,7 +133,7 @@ let ``tree test second step`` () =
 //map1:   *first*        map2:   *first*        map3    *first*
 //          |                      |                    /      \
 //       second                  second              second   third
-//         |                       |                   |        |
+//         |                                           |        |
 //       third                   third              fourth   fifth 
 
 // *first* - infected computer

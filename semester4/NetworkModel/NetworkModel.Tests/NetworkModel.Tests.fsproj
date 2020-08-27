@@ -3,8 +3,8 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
 
-        <IsPackable>false</IsPackable>
-        <GenerateProgramFile>false</GenerateProgramFile>
+        <IsPackable>true</IsPackable>
+        <GenerateProgramFile>true</GenerateProgramFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -16,7 +16,6 @@
 
     <ItemGroup>
         <Compile Include="NetworkTests.fs" />
-        <Compile Include="Program.fs" />
     </ItemGroup>
 
     <ItemGroup>
