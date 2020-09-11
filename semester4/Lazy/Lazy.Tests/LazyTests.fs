@@ -4,6 +4,7 @@ open System.Threading
 open NUnit.Framework
 open FsUnit
 open LazyFactory
+open ILazy
 
 [<Test>]
 let ``simple int single thread lazy test`` () =
@@ -73,3 +74,23 @@ let ``simple work lock free test`` () =
 let ``simple work multi thread lock test`` () =
     let holder = LazyFactory<int>.LockMultiThreadLazy(fun () -> 1)
     holder.Get() |> should equal 1
+
+let LazyTestHelper (object : ILazy<'a>, expected) =
+    let threadWork () =
+        object.Get() |> should equal expected
+
+    let threads = Array.init 10 (fun _ -> Thread(threadWork))
+
+    for thread in threads do
+        thread.Start()
+
+    for thread in threads do
+        thread.Join()
+
+[<Test>]
+let ``multithread lock free lazy`` () =
+    LazyTestHelper(LazyFactory<string>.LockFreeLazy(fun _ -> "hello" + " " + "world"), "hello world")
+
+[<Test>]
+let ``multithread lock lazy`` () =
+    LazyTestHelper(LazyFactory<string>.LockMultiThreadLazy(fun _ -> "hello" + " " + "world"), "hello world")
