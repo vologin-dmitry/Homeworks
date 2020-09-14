@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{amsmath}
+\setmainfont[Mapping=tex-text,Ligatures=TeX]{CMU Serif}
+\usepackage[left=10mm, top=10mm, right=10mm, bottom=10mm, nohead, nofoot]{geometry}
+
+\date{}
+\newtheorem{problem}{Задача}
+
+\title{Beta-reduction}
+
+\begin{document}
+\maketitle
+\begin{problem}
+Выполнить бета-редукцию λ-терма ((λa.(λb.b b) (λb.b b)) b) ((λc.(c b)) (λa.a))
+\end{problem}
+
+\Large
+\noindent
+((λa.(λb.b b) (λb.b b)) b) ((λc.(c b)) (λa.a)) $\underset{\beta}{\longrightarrow}$ (λb.b b) (λb.b b) ((λc.(c b)) (λa.a)) $\underset{\beta}{\longrightarrow}$ 
+(λb.b b) (λb.b b) ((λa.a) b) $\underset{\beta}{\longrightarrow}$ (λb.b b) (λb.b b) b 
+
+
+\end{document}
