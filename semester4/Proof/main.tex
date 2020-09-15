@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{amsmath}
+\setmainfont[Mapping=tex-text,Ligatures=TeX]{CMU Serif}
+\usepackage[left=10mm, top=10mm, right=10mm, bottom=10mm, nohead, nofoot]{geometry}
+
+\date{}
+\newtheorem{problem}{Задача}
+
+\title{Proof}
+
+\begin{document}
+\maketitle
+\begin{problem}
+Доказать, что S K K = I
+\end{problem}
+
+\Large
+\noindent
+S K K = (λ.xyz.xz(yz))(λxy.x)(λxy.x) $\underset{\beta}{\longrightarrow}$ \\
+$\underset{\beta}{\longrightarrow}$ (λyz.(λxy.x)z(yz))(λxy.x) $\underset{\beta}{\longrightarrow}$ \\
+$\underset{\beta}{\longrightarrow}$ (λyz.(λy.z)(yz))(λxy.x) $\underset{\beta}{\longrightarrow}$ \\
+$\underset{\beta}{\longrightarrow}$ (λyz.z)(λxy.x) $\underset{\beta}{\longrightarrow}$ \\
+$\underset{\beta}{\longrightarrow}$ (λz.z) = I
+\end{document}
