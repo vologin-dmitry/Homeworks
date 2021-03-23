@@ -1,0 +1,21 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "NetworkModel", "NetworkModel\NetworkModel.fsproj", "{DFF44CCE-5C05-48CC-ADD0-182F16E27C2D}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "NetworkModel.Tests", "NetworkModel.Tests\NetworkModel.Tests.fsproj", "{D36710BE-93AB-469D-B978-ACA595198752}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DFF44CCE-5C05-48CC-ADD0-182F16E27C2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF44CCE-5C05-48CC-ADD0-182F16E27C2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF44CCE-5C05-48CC-ADD0-182F16E27C2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF44CCE-5C05-48CC-ADD0-182F16E27C2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D36710BE-93AB-469D-B978-ACA595198752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D36710BE-93AB-469D-B978-ACA595198752}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D36710BE-93AB-469D-B978-ACA595198752}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D36710BE-93AB-469D-B978-ACA595198752}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
