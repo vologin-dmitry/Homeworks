@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Interpreter", "Interpreter\Interpreter.fsproj", "{F4AC6C26-010E-4A43-9A7E-DE86E607064B}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "InterpreterTests", "InterpreterTests\InterpreterTests.fsproj", "{B0759521-85A7-4058-A22F-DAC2B0BC2EAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4AC6C26-010E-4A43-9A7E-DE86E607064B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4AC6C26-010E-4A43-9A7E-DE86E607064B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4AC6C26-010E-4A43-9A7E-DE86E607064B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4AC6C26-010E-4A43-9A7E-DE86E607064B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0759521-85A7-4058-A22F-DAC2B0BC2EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0759521-85A7-4058-A22F-DAC2B0BC2EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0759521-85A7-4058-A22F-DAC2B0BC2EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0759521-85A7-4058-A22F-DAC2B0BC2EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

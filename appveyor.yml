@@ -5,7 +5,7 @@ init:
 
 environment:
   matrix:
-  - solution: Semester4/NetworkModel/NetworkModel.sln
+  - solution: Semester4/Interpreter/Interpreter.sln
 
 before_build:
   - nuget restore %solution%
